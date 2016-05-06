@@ -1,8 +1,8 @@
 #bird{
     position: fixed;
-    -webkit-animation:bird-fly 20s linear 8s infinite;
-    -o-animation:bird-fly 20s linear 8s infinite;
-    animation:bird-fly 20s linear 8s infinite;
+    -webkit-animation:bird-fly 20s linear 0s infinite;
+    -o-animation:bird-fly 20s linear 0s infinite;
+    animation:bird-fly 20s linear 0s infinite;
     -webkit-transform: scale(0.4);
     -moz-transform: scale(0.4);
     -ms-transform: scale(0.4);
@@ -46,9 +46,9 @@
     color: yellow;
     position: absolute;
     top: 100%;
-    -webkit-animation:scroll 35s linear 4s infinite;
-    -o-animation:scroll 35s linear 4s infinite;
-    animation:scroll 35s linear 4s infinite;
+    -webkit-animation:scroll 35s linear 0s infinite;
+    -o-animation:scroll 35s linear 0s infinite;
+    animation:scroll 35s linear 0s infinite;
 }
 #products p{
     line-height: 3em;
