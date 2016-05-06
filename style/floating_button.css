@@ -1,0 +1,54 @@
+button.floating-button{
+    color: white;
+    margin: 0;
+    border: 0;
+    outline: none;
+    font-size: 3em;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    padding-top: 2px;
+    display: block;
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    background: limegreen;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-box-shadow: 10px 10px 10px gray;
+    -moz-box-shadow:  10px 10px 10px gray;
+    box-shadow: 10px 10px 10px gray;
+    -webkit-transition: transform 2s;
+    -moz-transition: transform 2s;
+    -ms-transition: transform 2s;
+    -o-transition: transform 2s;
+    transition: transform 2s;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 0.9s;
+    animation-name: animatebottom;
+    animation-duration: 0.9s
+}
+
+button.floating-button:hover {
+    -webkit-transform: scale(1.2, 1.2);
+    -moz-transform: scale(1.2, 1.2);
+    -ms-transform: scale(1.2, 1.2);
+    -o-transform: scale(1.2, 1.2);
+    transform: scale(1.2, 1.2);
+    background: green;
+    cursor: pointer;
+}
+
+
+@-webkit-keyframes animatebottom {
+    from {bottom:-300px; opacity:0}
+    to {bottom: 30px; opacity:1}
+}
+
+@keyframes animatebottom {
+    from {bottom:-300px; opacity:0}
+    to {bottom: 30px; opacity:1}
+}

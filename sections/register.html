@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../resources/images/tab/tab_icon.png">
+    <link rel="stylesheet" href="../style/notifier.css">
+    <title>GeekStore - Registro</title>
+</head>
+<body>
+<h1>Ingresa tu informacion</h1>
+<form action="" name="form">
+    <label for="username">Nombre de usuario</label><br>
+    <input type="text" name="username" id="username">
+    <hr>
+    <label for="email">Correo electronico</label><br>
+    <input type="text" name="email" id="email">
+    <hr>
+    <label for="password">Contrase&ntilde;a</label><br>
+    <input type="password" name="password" id="password">
+    <hr>
+    <label for="phone">Telefono</label><br>
+    <input type="tel" name="phone" id="phone">
+    <hr>
+    <input type="button" value="submit" name="btnRegister">
+</form>
+<script src="../javascript/ajax.js"></script>
+<script src="../javascript/notifier.js"></script>
+<script src="../javascript/cookies.js"></script>
+<script src="../javascript/factory.js"></script>
+<script>
+    window.onload = init;
+
+    function init(){
+        if( cookieManager.check('user') ){
+            redirectTo('principal.html');
+        }
+
+        var btnRegister = document.form.btnRegister;
+        btnRegister.onclick = function(){
+            if( validateFields()){
+                register();
+            }
+        }
+    }
+
+    function validateFields(){
+        var form = document.form;
+        if( form.username.value.length > 0 ){
+            if( form.password.value.length > 0 ){
+                if( form.phone.value.length > 0){
+                    if( form.email.value.length > 0){
+                        return true;
+                    }else{
+                        alert('El correo no puede ser vacio');
+                    }
+                }else{
+                  alert('El telefono no puede ser vacio');
+                }
+            }else{
+                alert('La contraseña no debe ser vacia');
+            }
+
+        }else{
+            alert('El campo usuario no puede ser vacio');
+        }
+        return false;
+    }
+
+    function register(){
+        var form = document.form;
+        var params = {};
+        params['username'] = form.username.value;
+        params['email'] = form.email.value;
+        params['password'] = form.password.value;
+        params['phone'] = form.phone.value;
+        ajax.expectJsonProperties(['status']);
+        ajax.post(
+                '../server/proccess_register.php',
+                params,
+                onRegisterSuccess,
+                onRegisterError
+        );
+    }
+
+    function onRegisterSuccess(json){
+        notifier.dontExpectsHTMLContent();
+        notifier.setTheme( MODAL_GREEN );
+        notifier.alert(
+                'Registro Exitoso',
+                'Te has registrado exitosamente en GeekStore, inicia sesión y empieza a sacar tu lado Geek',
+                function(){
+                    redirectTo('login.html');
+                }
+        );
+    }
+    function onRegisterError(error){
+        appendLog('REGISTER', error);
+    }
+</script>
+</body>
+</html>

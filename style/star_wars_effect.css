@@ -1,0 +1,60 @@
+#bird{
+    position: fixed;
+    -webkit-animation:bird-fly 20s linear 8s infinite;
+    -o-animation:bird-fly 20s linear 8s infinite;
+    animation:bird-fly 20s linear 8s infinite;
+    -webkit-transform: scale(0.4);
+    -moz-transform: scale(0.4);
+    -ms-transform: scale(0.4);
+    -o-transform: scale(0.4);
+    transform: scale(0.4);
+    cursor: pointer;
+    margin-left: -15%;
+}
+@keyframes bird-fly {
+    0%{
+        margin-top: 15%;
+    }
+    50%{
+        margin-left: 50%;
+        margin-top: 10%;
+    }
+    100%{
+        margin-top: 15%;
+        margin-left: 100%;
+    }
+}
+#content{
+    overflow: hidden;
+    text-align: center;
+    -webkit-transform-origin:50% 100%;
+    -moz-transform-origin:50% 100%;
+    -ms-transform-origin:50% 100%;
+    -o-transform-origin:50% 100%;
+    transform-origin:50% 100%;
+    -webkit-transform: perspective(500px) rotateX(30deg);
+    -moz-transform: perspective(500px) rotateX(30deg);
+    -ms-transform: perspective(500px) rotateX(30deg);
+    -o-transform: perspective(500px) rotateX(30deg);
+    transform: perspective(500px) rotateX(30deg);
+}
+
+#products
+{
+    padding-left: 5%;
+    padding-right: 5%;
+    color: yellow;
+    position: absolute;
+    top: 100%;
+    -webkit-animation:scroll 35s linear 4s infinite;
+    -o-animation:scroll 35s linear 4s infinite;
+    animation:scroll 35s linear 4s infinite;
+}
+#products p{
+    line-height: 3em;
+    font-size: 1em;
+}
+@keyframes scroll {
+    0% { top: 100%; }
+    100% { top: -120%; }
+}

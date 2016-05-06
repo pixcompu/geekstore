@@ -1,0 +1,16 @@
+#splash{
+    font-family: game,sans-serif ;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 2;
+    opacity: 1;
+    position: fixed;
+    text-align: center;
+    padding-top: 15%;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+}

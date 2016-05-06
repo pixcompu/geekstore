@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../resources/images/tab/tab_icon.png">
+    <title>GeekStore - Iniciar Sesión</title>
+    <link rel="stylesheet" href="../style/notifier.css">
+</head>
+<body>
+<h1>Ingresa tu informacion</h1>
+<form action="" name="form" method="POST">
+    <label for="username">Nombre de usuario</label><br>
+    <input type="text" name="username" id="username">
+    <hr>
+    <label for="password">Contrase&ntilde;a</label><br>
+    <input type="password" name="password" id="password">
+    <hr>
+    <input type="button" value="submit" name="btnLogin">
+</form>
+<script src="../javascript/ajax.js"></script>
+<script src="../javascript/cookies.js"></script>
+<script src="../javascript/notifier.js"></script>
+<script src="../javascript/factory.js"></script>
+<script>
+    window.onload = init;
+
+    function login() {
+        var params = {};
+        params['username'] = document.form.username.value;
+        params['password'] = document.form.password.value;
+        ajax.expectJsonProperties(['status']);
+        ajax.post(
+                '../server/proccess_login.php',
+                params,
+                onLoginSuccess,
+                onLoginFailure
+        );
+
+    }
+
+    function validateFields(){
+        return true;
+    }
+
+    function init(){
+        if( cookieManager.check('user') ){
+            window.location = 'principal.html';
+        }
+
+        document.form.btnLogin.onclick = function(){
+            if( validateFields() ){
+                login();
+            }
+        }
+    }
+
+    function onLoginSuccess(response){
+        cookieManager.create('user', JSON.stringify(response.data), 60);
+        redirectTo('principal.html')
+    }
+
+    function onLoginFailure(error){
+        notifier.setTheme( MODAL_RED );
+        notifier.alert(
+                'No se pudo inicar tu sesión',
+                error
+        );
+    }
+</script>
+</body>
+</html>
