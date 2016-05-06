@@ -4,7 +4,9 @@ Proyecto final de Programación WEB.
 
 Geeekstore es una pagina que simula ser una tienda en linea de articulos de peliculas/anime/series.
 
-##Sitio de prueba en linea (Proveedor de Hosting : Hostinger, Ultima Actualización : 06/05/2016).
+##Sitio de prueba en linea.
+######Proveedor de Hosting : Hostinger
+######Ultima Actualización : 06/05/2016.
 
 http://pixcompu.esy.es/sections/principal.html
 
