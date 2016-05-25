@@ -5,15 +5,109 @@
     <title>GeekStore - Contacto</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../style/star_wars_effect.css">
     <link rel="icon" href="../resources/images/tab/tab_icon.png">
+
+
     <style type="text/css">
         html, body { height: 100%; margin: 0; padding: 0; }
-        #map { width: 500px; height: 500px; }
+
+        @font-face {
+            font-family: game;
+            src: url('../resources/fonts/game/PressStart2P-Regular.ttf');
+        }
+
+        body{
+            font-family: game, serif;
+
+            background: lightgrey url('../resources/images/background/pacman2.jpg') center;
+        }
+
+        #map {
+            width: 350px;
+            height: 350px;
+            border-radius: 10%;
+        }
+
+        #container{
+            margin-top: 100px;
+            margin-left: 100px;
+        }
+
+        #email{
+            width: 400px;
+            height: 30px;
+            margin: 20px;
+        }
+
+        #message{
+            width: 400px;
+            height: 100px;
+            margin: 20px;
+        }
+
+        #send{
+            width: 200px;
+            height: 30px;
+            margin: 20px;
+
+        }
+
+        p {
+            color: #fefefe;
+            font-size: 20px;
+        }
+
+        #container>div{
+            width: 100px;
+        }
+
+        table{
+            text-align: center;
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+
+        td{
+            padding: 50px;
+        }
     </style>
 </head>
 <body>
-<p>Encuentranos en esta direccion</p>
-<div id="map"></div>
+
+<img src="../resources/images/icons/pacman.gif" id="bird" alt="">
+
+
+<div id="container">
+
+    <table>
+        <tr>
+            <td>
+                <p>Encuentranos en esta dirección</p>
+                <div id="map"></div>
+            </td>
+            <td>
+                <p>Envíanos un correo.</p>
+                <div >
+                    <input id="email" type="email" placeholder="Correo electrónico" adro> <br>
+                    <textarea id="message"></textarea><br>
+                    <button id="send">Enviar</button><br>
+                </div>
+            </td>
+        </tr>
+
+
+    </table>
+
+
+
+
+
+
+</div>
+
+
+
 <script type="text/javascript">
     var map;
     function initMap() {
