@@ -3,6 +3,9 @@
  */
 
 function CookieManager(){
+
+    var firstCookie = document.cookie.length == 0;
+
     this.create = function(name, value, days){
         var date = new Date();
         date.setTime(date.getTime()+(days*24*60*60*1000));
@@ -35,8 +38,11 @@ function CookieManager(){
     function getStringCookie(name){
         var inferiorIndex = document.cookie.indexOf(name+"=") + name.length + 1;
         var superiorIndex = document.cookie.indexOf(";", inferiorIndex);
-        if( inferiorIndex == -1 || superiorIndex == -1){
-            throw new Error('CookieManager doesnt exist!');
+        if( superiorIndex == -1){
+            superiorIndex = document.cookie.length;
+        }
+        if( inferiorIndex == -1){
+            throw new Error('Cookie doesnt exist!');
         }
         return document.cookie.substring(inferiorIndex, superiorIndex);
     }

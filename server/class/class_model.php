@@ -422,3 +422,185 @@ class User extends Model{
 
 }
 
+class Sale_item extends Model{
+    protected $id;
+    protected $fp_id;
+    protected $quantity;
+    protected $subtotal;
+    protected $hidden = ['id'];
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getFpId()
+    {
+        return $this->fp_id;
+    }
+
+    /**
+     * @param mixed $fp_id
+     */
+    public function setFpId($fp_id)
+    {
+        $this->fp_id = $fp_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * @param mixed $quantity
+     */
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSubtotal()
+    {
+        return $this->subtotal;
+    }
+
+    /**
+     * @param mixed $subtotal
+     */
+    public function setSubtotal($subtotal)
+    {
+        $this->subtotal = $subtotal;
+    }
+}
+
+class Sale_ticket extends Model{
+    protected $fu_username;
+    protected $fs_id;
+    protected $total;
+    protected $date;
+
+    /**
+     * @return mixed
+     */
+    public function getFuUsername()
+    {
+        return $this->fu_username;
+    }
+
+    /**
+     * @param mixed $fu_username
+     */
+    public function setFuUsername($fu_username)
+    {
+        $this->fu_username = $fu_username;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFsId()
+    {
+        return $this->fs_id;
+    }
+
+    /**
+     * @param mixed $fs_id
+     */
+    public function setFsId($fs_id)
+    {
+        $this->fs_id = $fs_id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTotal()
+    {
+        return $this->total;
+    }
+
+    /**
+     * @param mixed $total
+     */
+    public function setTotal($total)
+    {
+        $this->total = $total;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param mixed $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+
+}
+class Sale extends Model{
+    protected $id;
+    protected $fsi_id;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFsiId()
+    {
+        return $this->fsi_id;
+    }
+
+    /**
+     * @param mixed $fsi_id
+     */
+    public function setFsiId($fsi_id)
+    {
+        $this->fsi_id = $fsi_id;
+    }
+
+
+}
