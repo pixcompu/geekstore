@@ -1,0 +1,86 @@
+@font-face {
+    font-family: game;
+    src: url('../resources/fonts/game/PressStart2P-Regular.ttf');
+}
+body {
+    font-family: game, serif;
+    background: black;
+}
+input {
+    font-family: game, serif;
+    border: none;
+    border-bottom: none;
+    margin: 10px;
+    outline: none;
+}
+input:focus {
+    border-bottom: 1px solid yellow;
+    outline: none;
+}
+.container {
+    margin: 50px auto;
+    width: 50%;
+    background: #fff;
+    border: 10px solid #FFEE00;
+    border-radius: 6px;
+}
+.container h1 {
+    text-align: center;
+    color: midnightblue;
+}
+.form {
+    position: relative;
+    margin: 0 auto;
+    padding: 20px 20px 20px;
+    width: 90%;
+}
+.form form {
+    overflow: hidden;
+    height: auto;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+.form form input[type=text], .form form input[type=password], .form form input[type=tel] {
+    width: 100%;
+    position: relative;
+    font-size: 12px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    padding-left: 20px;
+    border: none;
+    color: #000;
+    outline: none;
+    margin: 0 auto;
+}
+.form .button {
+    padding: 14px;
+    border: none;
+    letter-spacing: 1px;
+    background: midnightblue;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    color: #FFF;
+    float: right;
+    margin-right: inherit;
+}
+::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: midnightblue;
+    opacity: 0.45;
+}
+:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: midnightblue;
+    opacity: 0.45;
+}
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: midnightblue;
+    opacity: 0.45;
+}
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: midnightblue;
+}

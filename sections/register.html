@@ -6,25 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="../resources/images/tab/tab_icon.png">
     <link rel="stylesheet" href="../style/notifier.css">
+    <link rel="stylesheet" href="../style/forms.css">
     <title>GeekStore - Registro</title>
 </head>
 <body>
-<h1>Ingresa tu informacion</h1>
-<form action="" name="form">
-    <label for="username">Nombre de usuario</label><br>
-    <input type="text" name="username" id="username">
-    <hr>
-    <label for="email">Correo electronico</label><br>
-    <input type="text" name="email" id="email">
-    <hr>
-    <label for="password">Contrase&ntilde;a</label><br>
-    <input type="password" name="password" id="password">
-    <hr>
-    <label for="phone">Telefono</label><br>
-    <input type="tel" name="phone" id="phone">
-    <hr>
-    <input type="button" value="submit" name="btnRegister">
-</form>
+
+  <div class="container">
+    <div class="form">
+      <h1>Ingresa tu información</h1>
+      <form action="" name="form">
+          <input type="text" name="username" id="username" placeholder="Nombre de usuario"><br>
+          <input type="text" name="email" id="email" placeholder="Correo electrónico"><br>
+          <input type="password" name="password" id="password" placeholder="Contrase&ntilde;a"><br>
+          <input type="tel" name="phone" id="phone" placeholder="Teléfono"><br>
+          <input type="button" name="btnRegister" class="button" value="Registrarse" >
+      </form>
+    </div>
+  </div>
+
 <script src="../javascript/ajax.js"></script>
 <script src="../javascript/notifier.js"></script>
 <script src="../javascript/cookies.js"></script>
