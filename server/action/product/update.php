@@ -1,5 +1,5 @@
 <?php
-require_once 'autoloader.php';
+require_once($_SERVER['DOCUMENT_ROOT'] . '/geekstore/server/autoloader.php');
 
 try{
 
@@ -13,19 +13,17 @@ try{
     $product = new Product();
     $product->setId($id);
 
-    if( $updatedImage ){
-        $fileUploader = new FileUploader();
-        $fileUploader->upload('image');
-        $imagePath = $fileUploader->getUploadedFileURL();
-    }else{
-        $imagePath = $product->getById()->image;
-    }
     $product->setId($id);
     $product->setName($name);
     $product->setDescription($description);
     $product->setPrice($price);
     $product->setQuantity($quantity);
-    $product->setImage($imagePath);
+    if( $updatedImage ){
+        $fileUploader = new FileUploader();
+        $fileUploader->upload('image');
+        $imagePath = $fileUploader->getUploadedFileURL();
+        $product->setImage($imagePath);
+    }
 
     $product->update();
     respondWithSuccess($product);

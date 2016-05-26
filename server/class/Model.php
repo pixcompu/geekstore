@@ -151,9 +151,12 @@ abstract class Model{
         $keys = array_keys($this->fields);
         $numKeys = count($keys);
         for($i = 0; $i<$numKeys; $i++){
-            $formattedSetPairs .= $keys[$i] . "=" . $this->fields[$keys[$i]];
-            if( $i != $numKeys - 1 ){
-                $formattedSetPairs.=",";
+            $currentAttribute = $keys[$i];
+            if(isset($this->fields[$currentAttribute])){
+                $formattedSetPairs .= $currentAttribute . "=" . $this->fields[$currentAttribute];
+                if( $i != $numKeys - 1 ){
+                    $formattedSetPairs.=",";
+                }
             }
         }
         return $formattedSetPairs;
@@ -326,8 +329,7 @@ class Product extends Model{
     {
         $this->quantity = $quantity;
     }
-
-
+    
 }
 
 define('TYPE_ADMIN', "admin");
@@ -422,13 +424,20 @@ class User extends Model{
 
 }
 
-class Sale_item extends Model{
+class SaleItem extends Model{
     protected $id;
     protected $fp_id;
     protected $quantity;
     protected $subtotal;
+    protected $tableName = 'sale_item';
     protected $hidden = ['id'];
 
+    public function save()
+    {
+        parent::save();
+        $this->id = $this->executor->getLastAutoincrementId();
+    }
+    
     /**
      * @return mixed
      */
@@ -495,11 +504,12 @@ class Sale_item extends Model{
     }
 }
 
-class Sale_ticket extends Model{
+class SaleTicket extends Model{
     protected $fu_username;
     protected $fs_id;
     protected $total;
     protected $date;
+    protected $tableName = "sale_ticket";
 
     /**
      * @return mixed
@@ -603,4 +613,15 @@ class Sale extends Model{
     }
 
 
+    public function getLastSale(){
+        $queryMaxId = "SELECT MAX(id) FROM " . $this->tableName;
+        $resultMax = $this->executor->executeQuery($queryMaxId);
+        if($resultMax){
+            $maxID = $resultMax->fetch_array()[0];
+            if($maxID != null){
+                return $maxID;
+            }
+        }
+        return -1;
+    }
 }

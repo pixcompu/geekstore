@@ -5,7 +5,7 @@
  * Date: 26/04/2016
  * Time: 12:42 PM
  */
-require_once 'autoloader.php';
+require_once($_SERVER['DOCUMENT_ROOT'] . '/geekstore/server/autoloader.php');
 
 $user = new User();
 try{

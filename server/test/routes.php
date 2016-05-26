@@ -1,2 +1,2 @@
 <?php
-echo print_r($_SERVER);
+require_once($_SERVER['DOCUMENT_ROOT'] . '/geekstore/server/autoloader.php');

@@ -5,7 +5,7 @@
  * Date: 25/04/2016
  * Time: 07:04 PM
  */
-require_once 'autoloader.php';
+require_once($_SERVER['DOCUMENT_ROOT'] . '/geekstore/server/autoloader.php');
 
 try{
     

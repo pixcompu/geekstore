@@ -1,5 +1,5 @@
 <?php
-require_once 'autoloader.php';
+require_once($_SERVER['DOCUMENT_ROOT'] . '/geekstore/server/autoloader.php');
 
 $username = $_POST['username'];
 $email = $_POST['email'];
