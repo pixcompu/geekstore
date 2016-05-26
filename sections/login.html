@@ -7,18 +7,19 @@
     <link rel="icon" href="../resources/images/tab/tab_icon.png">
     <title>GeekStore - Iniciar Sesión</title>
     <link rel="stylesheet" href="../style/notifier.css">
+    <link rel="stylesheet" href="../style/forms.css">
 </head>
 <body>
-<h1>Ingresa tu informacion</h1>
-<form action="" name="form" method="POST">
-    <label for="username">Nombre de usuario</label><br>
-    <input type="text" name="username" id="username">
-    <hr>
-    <label for="password">Contrase&ntilde;a</label><br>
-    <input type="password" name="password" id="password">
-    <hr>
-    <input type="button" value="submit" name="btnLogin">
-</form>
+<div class="container">
+  <div class="form">
+    <h1>Iniciar Sesión</h1>
+    <form action="" name="form" method="POST">
+        <input type="text" name="username" id="username" placeholder="Nombre de usuario"><br>
+        <input type="password" name="password" id="password" placeholder="Contrase&ntilde;a"><br>
+        <input type="button" value="Iniciar" class="button" name="btnLogin">
+    </form>
+  </div>
+</div>
 <script src="../javascript/ajax.js"></script>
 <script src="../javascript/cookies.js"></script>
 <script src="../javascript/notifier.js"></script>
