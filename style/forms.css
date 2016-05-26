@@ -26,6 +26,7 @@ input:focus {
 }
 .container h1 {
     text-align: center;
+    font-size: 1.5em;   
     color: midnightblue;
 }
 .form {
@@ -83,4 +84,11 @@ input:focus {
 :-ms-input-placeholder {
     /* Internet Explorer 10-11 */
     color: midnightblue;
+}
+
+.form form input[type=text], .form form input[type=password], .form form input[type=tel],
+::-webkit-input-placeholder, .container h1, .form .button  {
+  transform:scale(1,1.2); /* W3C */
+  -webkit-transform:scale(1,1.2); /* Safari and Chrome */
+
 }
