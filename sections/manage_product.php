@@ -34,7 +34,7 @@
         validateAdmin();
         ajax.expectJsonProperties(['status']);
         ajax.get(
-                '../server/proccess_fetch_products.php',
+                '../server/action/product/get.php',
                 onFetchSuccess,
                 onFetchFailure
         );
@@ -45,7 +45,7 @@
         showProducts( data );
     }
 
-    function onFetchFailure(error){
+        function onFetchFailure(error){
         appendLog('FETCH', error);
     }
 
@@ -92,7 +92,7 @@
     function register(){
         var formData = getProductFormData();
         ajax.postWithProgress(
-                '../server/proccess_register_product.php',
+                '../server/action/product/new.php',
                 formData,
                 onRegisterSuccess,
                 onRegisterFailure,
@@ -160,7 +160,7 @@
     function updateProduct( data ) {
         var formData = getProductFormData();
         ajax.postWithProgress(
-                '../server/proccess_update_product.php',
+                '../server/action/product/update.php',
                 formData,
                 onUpdateSuccess,
                 onUpdateFailure,

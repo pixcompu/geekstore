@@ -20,7 +20,7 @@
     function init(){
         ajax.expectJsonProperties(['status']);
         ajax.get(
-                '../server/proccess_fetch_products.php',
+                '../server/action/product/get.php',
                 onFetchSuccess,
                 onFetchFailure
         );
@@ -113,7 +113,7 @@
         item['subtotal'] = item['cart_quantity'] * item['price'];
         items[item['id']] = item;
         cookieManager.setValue('cart', JSON.stringify(items));
-        redirectTo('cart.html');
+        redirectTo('cart.php');
     }
 
     function onFetchFailure(error){

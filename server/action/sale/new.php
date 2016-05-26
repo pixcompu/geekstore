@@ -1,10 +1,10 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/geekstore/server/autoloader.php');
+require_once('../../autoloader.php');
 
 try{
-    $products = '{"name":"pix", "products":[{"id":1, "quantity":1},{"id":9, "quantity":2}]}';
-    $saleAttributes = json_decode($products, true);
-    $username = $saleAttributes["name"];
+    //$products = '"sale":{"user":"pix", "products":[{"id":1, "quantity":1},{"id":9, "quantity":2}]}';
+    $saleAttributes = json_decode($_POST['sale'], true);
+    $username = $saleAttributes["user"];
     $today = date("Y-m-d");
 
     $sale = new Sale();

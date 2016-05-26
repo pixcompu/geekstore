@@ -93,14 +93,14 @@ a.logout-item:hover{
 }
 
 @media screen and (max-width: 760px) {
-   #brand p{
-       font-size: 1.2em;
-       margin-top: 10%;
-   }
+    #brand p{
+        font-size: 1.2em;
+        margin-top: 10%;
+    }
     #session p{
         font-size: 0.6em;
     }
-  #navbar li{
-      width: 100%;
-  }
+    #navbar li{
+        width: 100%;
+    }
 }

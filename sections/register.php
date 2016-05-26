@@ -33,7 +33,7 @@
 
     function init(){
         if( cookieManager.check('user') ){
-            redirectTo('principal.html');
+            redirectTo('principal.php');
         }
 
         var btnRegister = document.form.btnRegister;
@@ -76,7 +76,7 @@
         params['phone'] = form.phone.value;
         ajax.expectJsonProperties(['status']);
         ajax.post(
-                '../server/proccess_register.php',
+                '../server/action/user/new.php',
                 params,
                 onRegisterSuccess,
                 onRegisterError
@@ -90,7 +90,7 @@
                 'Registro Exitoso',
                 'Te has registrado exitosamente en GeekStore, inicia sesión y empieza a sacar tu lado Geek',
                 function(){
-                    redirectTo('login.html');
+                    redirectTo('login.php');
                 }
         );
     }

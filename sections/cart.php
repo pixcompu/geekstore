@@ -13,7 +13,7 @@
 <div id="options">
     <button id="btn_buy_cart_items">Realizar Compra</button>
     <button id="btn_drop_cart">Vaciar Carrito</button>
-    <a href="catalog.html">Seguir Comprando</a>
+    <a href="catalog.php">Seguir Comprando</a>
 </div>
 <script src="../javascript/notifier.js"></script>
 <script src="../javascript/cookies.js"></script>
@@ -115,7 +115,7 @@
             var cartPanel = findViewById('cart');
             cartPanel.appendChild( newH1('Tu carrito esta vacio!') );
             cartPanel.appendChild( newImg('../resources/images/icons/squirtle.png') );
-            cartPanel.appendChild( newHyperLink('Vamo a Compra', 'catalog.html'));
+            cartPanel.appendChild( newHyperLink('Vamo a Compra', 'catalog.php'));
             clearElement(findViewById('options'));
         }
     }

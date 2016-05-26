@@ -5,7 +5,7 @@
  * Date: 23/04/2016
  * Time: 04:09 PM
  */
-require_once($_SERVER['DOCUMENT_ROOT'] . '/geekstore/server/autoloader.php');
+require_once('../../autoloader.php');
 
 $username = $_POST['username'];
 $email = $_POST['email'];

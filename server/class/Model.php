@@ -202,7 +202,6 @@ abstract class Model{
         return $fields;
     }
 }
-define('PROJECT_FOLDER_NAME', 'store');
 class Product extends Model{
 
     protected $id;
@@ -331,9 +330,6 @@ class Product extends Model{
     }
     
 }
-
-define('TYPE_ADMIN', "admin");
-define('TYPE_USER', "user");
 class User extends Model{
     protected $username;
     protected $email;

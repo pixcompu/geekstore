@@ -6,10 +6,6 @@
  * Time: 03:25 PM
  */
 header('Content-Type: text/html; charset=utf-8');
-define('DIRECCION', 'localhost');
-define('USER', 'root');
-define('PASSWORD', '');
-define('DATABASE', 'geekstore');
 define('CHARSET', "utf8");
 define('WITH_FAILURE', false);
 define('WITH_SUCCESS', true);

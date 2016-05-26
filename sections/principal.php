@@ -31,16 +31,15 @@
         </div>
         <div id="session">
             <ul id="session-options">
-                <li><a class="login-item" href="register.html">Reg&iacute;strate</a></li>
-                <li><a class="login-item" href="login.html">Inicia Sesi&oacute;n</a></li>
+                <li><a class="login-item" href="register.php">Reg&iacute;strate</a></li>
+                <li><a class="login-item" href="login.php">Inicia Sesi&oacute;n</a></li>
             </ul>
         </div>
         <div id="navbar">
             <ul id="navbar-options">
-                <li><a class="navbar-item" href="catalog.html">Productos</a></li>
-                <li><a class="navbar-item" href="cart.html">Mi Carrito</a></li>
-                <li><a class="navbar-item" href="about.html">Acerca de</a></li>
-                <li><a class="navbar-item" href="contact.html">Contacto</a></li>
+                <li><a class="navbar-item" href="catalog.php">Productos</a></li>
+                <li><a class="navbar-item" href="cart.php">Mi Carrito</a></li>
+                <li><a class="navbar-item" href="contact.php">Contacto</a></li>
             </ul>
         </div>
     </div>
@@ -63,7 +62,7 @@
             <p>
                 Visita nuestro cat&aacute;logo dando click en la siguiente imagen
             </p>
-            <a href="catalog.html"><img src="../resources/images/icons/zelda-dangerous.png" alt=""></a>
+            <a href="catalog.php"><img src="../resources/images/icons/zelda-dangerous.png" alt=""></a>
         </div>
     </div>
 </div>
@@ -120,14 +119,14 @@
         var navbar = findViewById('navbar-options');
         appendItemsTo( navbar,
                 [
-                    newLi( addClassTo(newHyperLink('Administrar Productos', 'manage_product.html'), 'navbar-item') ),
-                    newLi( addClassTo(newHyperLink('Administrar Usuarios', 'manage_user.html'), 'navbar-item'))
+                    newLi( addClassTo(newHyperLink('Administrar Productos', 'manage_product.php'), 'navbar-item') ),
+                    newLi( addClassTo(newHyperLink('Administrar Usuarios', 'manage_user.php'), 'navbar-item'))
                 ]);
     }
 
     function addProfileOption() {
         var navbar = findViewById('navbar-options');
-        navbar.appendChild( newLi( addClassTo(newHyperLink('Mi perfil', 'profile.html'), 'navbar-item')) );
+        navbar.appendChild( newLi( addClassTo(newHyperLink('Mi perfil', 'profile.php'), 'navbar-item')) );
     }
 
     function showLogoutDialog(event){
@@ -148,7 +147,7 @@
     function logout(){
         cookieManager.erase('user');
         ajax.post(
-                '../server/proccess_logout.php',
+                '../server/action/session/logout.php',
                 {},
                 onLogoutSuccess,
                 onLogoutError
@@ -156,7 +155,7 @@
     }
 
     function onLogoutSuccess( response ){
-        redirectTo('principal.html');
+        redirectTo('principal.php');
     }
 
     function onLogoutError( error ){

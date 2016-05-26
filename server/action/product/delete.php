@@ -1,11 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: PIX
- * Date: 26/04/2016
- * Time: 12:45 AM
- */
-require_once($_SERVER['DOCUMENT_ROOT'] . '/geekstore/server/autoloader.php');
+require_once('../../autoloader.php');
 
 try{
     $product = new Product();

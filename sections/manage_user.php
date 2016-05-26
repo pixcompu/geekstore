@@ -22,11 +22,11 @@
 
     function validateAdmin() {
         if( !cookieManager.check('user') ){
-            redirectTo('login.html');
+            redirectTo('login.php');
         }else{
             var user = JSON.parse(cookieManager.getValue('user'));
             if( user['type'] !== 'admin' ){
-                redirectTo('principal.html');
+                redirectTo('principal.php');
             }
         }
     }
@@ -35,7 +35,7 @@
         validateAdmin();
         ajax.expectJsonProperties(['status']);
         ajax.get(
-                '../server/proccess_fetch_users.php',
+                '../server/action/user/get.php',
                 onFetchSuccess,
                 onFetchFailure
         );

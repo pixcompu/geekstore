@@ -2,15 +2,16 @@
 /**
  * Created by PhpStorm.
  * User: PIX
- * Date: 26/04/2016
- * Time: 12:42 PM
+ * Date: 26/05/2016
+ * Time: 02:53 PM
  */
 require_once('../../autoloader.php');
 
-$user = new User();
 try{
-    $users = $user->all();
-    respondWithSuccess($users);
+    $user = new User();
+    $user->setUsername($_POST['username']);
+    $user->delete();
+    respondWithSuccess();
 }catch(Exception $e){
     respondWithError($e->getMessage());
 }

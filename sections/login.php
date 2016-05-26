@@ -33,7 +33,7 @@
         params['password'] = document.form.password.value;
         ajax.expectJsonProperties(['status']);
         ajax.post(
-                '../server/proccess_login.php',
+                '../server/action/session/login.php',
                 params,
                 onLoginSuccess,
                 onLoginFailure
@@ -58,7 +58,7 @@
 
     function init(){
         if( cookieManager.check('user') ){
-            window.location = 'principal.html';
+            redirectTo('principal.php');
         }
 
         document.form.btnLogin.onclick = function(){
@@ -70,7 +70,7 @@
 
     function onLoginSuccess(response){
         cookieManager.create('user', JSON.stringify(response.data), 60);
-        redirectTo('principal.html')
+        redirectTo('principal.php')
     }
 
     function onLoginFailure(error){

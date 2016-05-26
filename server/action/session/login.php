@@ -1,6 +1,6 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/geekstore/server/autoloader.php');
+require_once('../../autoloader.php');
 
 $username = $_POST['username'];
 $password = $_POST['password'];

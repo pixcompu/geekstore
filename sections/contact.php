@@ -89,7 +89,7 @@
             <td>
                 <p>Envíanos un correo.</p>
                 <div >
-                    <input id="email" type="email" placeholder="Correo electrónico" adro> <br>
+                    <input id="email" type="email" placeholder="Correo electrónico"> <br>
                     <textarea id="message"></textarea><br>
                     <button id="send">Enviar</button><br>
                 </div>
