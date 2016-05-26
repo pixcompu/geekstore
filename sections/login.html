@@ -42,7 +42,18 @@
     }
 
     function validateFields(){
-        return true;
+      var form = document.form;
+      if( form.username.value.length > 0 ){
+          if( form.password.value.length > 0 ){
+              return true;
+          }else{
+              alert('La contraseña no debe ser vacia');
+          }
+
+      }else{
+          alert('El campo usuario no puede ser vacio');
+      }
+      return false;
     }
 
     function init(){
