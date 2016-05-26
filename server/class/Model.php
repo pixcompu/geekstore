@@ -202,7 +202,7 @@ abstract class Model{
         return $fields;
     }
 }
-define('PROJECT_FOLDER_NAME', 'geekstore');
+define('PROJECT_FOLDER_NAME', 'store');
 class Product extends Model{
 
     protected $id;

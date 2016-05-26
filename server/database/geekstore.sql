@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-04-2016 a las 10:29:15
+-- Tiempo de generación: 26-05-2016 a las 20:55:25
 -- Versión del servidor: 5.6.25
 -- Versión de PHP: 5.6.11
 
@@ -40,8 +40,8 @@ CREATE TABLE IF NOT EXISTS `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `description`, `image`, `price`, `quantity`) VALUES
-(1, 'Capa de invisibilidad', 'Capa de invisivilidad usada en la pelicula de Harry Potter', 'resources/images/catalog/capa_harry.jpg', 99, 10),
-(9, 'La mascara de Loki', 'La leyenda dice que esta máscara da poderes', 'resources/images/catalog/mascara.jpg', 123, 12),
+(1, 'Capa de invisibilidad', 'Capa de invisivilidad usada en la pelicula de Harry Potter', 'resources/images/catalog/capa_harry.jpg', 99, 5),
+(9, 'La mascara de Loki', 'La leyenda dice que esta máscara da poderes', 'resources/images/catalog/mascara.jpg', 123, 6),
 (11, 'Guy Fawkes Mask', 'Esta máscara fue usada en V de Vendetta', 'resources/images/catalog/v_de_venganza.jpeg', 200, 12),
 (12, 'Escudo de la Justicia', 'Este escudo pertenece al capitan américa, aunque estuvo en manos del hombre araña 10 segundos de tráiler.', 'resources/images/catalog/captain_shield.jpg', 1000, 2),
 (13, 'Baticapa', 'Capa del murcielago de la noche', 'resources/images/catalog/baticapa.jpg', 150, 12),
@@ -66,7 +66,6 @@ CREATE TABLE IF NOT EXISTS `sale` (
 
 CREATE TABLE IF NOT EXISTS `sale_item` (
   `id` int(11) NOT NULL,
-  `fu_username` varchar(50) NOT NULL,
   `fp_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `subtotal` float NOT NULL
@@ -105,6 +104,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`username`, `email`, `password`, `type`, `phone`) VALUES
 ('geekstore', 'geekstore@admin.com', '97d81fce2029a75d79fe60781dc4124e', 'admin', '9994490032'),
+('luisburgos', 'luis@gmail.com', '502ff82f7f1f8218dd41201fe4353687', 'user', '9991929194'),
 ('pixcompu', 'pixcompu@outlook.com', 'e088bfbcf61dfd9f2fd42526c5a5bae4', 'user', '9994490032');
 
 --
@@ -115,6 +115,12 @@ INSERT INTO `user` (`username`, `email`, `password`, `type`, `phone`) VALUES
 -- Indices de la tabla `product`
 --
 ALTER TABLE `product`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `sale_item`
+--
+ALTER TABLE `sale_item`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -133,6 +139,11 @@ ALTER TABLE `user`
 --
 ALTER TABLE `product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT de la tabla `sale_item`
+--
+ALTER TABLE `sale_item`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
