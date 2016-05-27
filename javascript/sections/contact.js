@@ -14,15 +14,23 @@ function init(){
 
 
 function validateFields(){
+    notifier.setTheme(MODAL_RED);
     if( findViewById('email').value.length > 0 ){
         if( findViewById('message').value.length > 0 ){
             return true;
         }else{
-            alert('El mensaje no puede ser vacío');
+            notifier.alert(
+                '¡Espera un momento!',
+                "El mensaje no puede ser vacio",
+                function(){}
+            );
         }
-
     }else{
-        alert('El correo no puede ser vacio');
+        notifier.alert(
+            '¡Espera un momento!',
+            "El correo no puede ser vacio",
+            function(){}
+        );
     }
     return false;
 }
@@ -41,10 +49,19 @@ function sendMessage() {
     );
 }
 function onSendSuccess(response){
-    alert('Mensaje enviado '+response);
-
+    notifier.setTheme(MODAL_GREEN);
+    notifier.alert(
+        '¡Espera un momento!',
+        "El correo ha sido enviado",
+        function(){}
+    );
 }
 
 function onSendFailure(error){
-    alert('No se pudo enviar el mensaje' + error);
+    notifier.setTheme(MODAL_RED);
+    notifier.alert(
+        '¡Espera un momento!',
+        'No se pudo enviar el mensaje' + error,
+        function(){}
+    );
 }
