@@ -54,7 +54,7 @@
             border-bottom: 2px solid blue;
         }
         #modal_window_body select{
-            padding: 2%;
+            padding: 0.8%;
         }
         #modal_window_body label{
             font-size: 0.6em;
@@ -135,14 +135,16 @@ require_once('scripts.php');
     }
 
     function updateProduct() {
-        var formData = getUserFormData();
-        ajax.postWithProgress(
-            '../server/action/user/update.php',
-            formData,
-            onUpdateSuccess,
-            onUpdateFailure,
-            onUpdateProgress
-        );
+        if( validateFormData() ) {
+            var formData = getUserFormData();
+            ajax.postWithProgress(
+                '../server/action/user/update.php',
+                formData,
+                onUpdateSuccess,
+                onUpdateFailure,
+                onUpdateProgress
+            );
+        }
     }
 
     function onUpdateProgress( total, current) {
@@ -230,14 +232,42 @@ require_once('scripts.php');
     }
 
     function registerUser(){
-        var formData = getUserFormData();
-        ajax.postWithProgress(
-            '../server/action/user/new.php',
-            formData,
-            onRegisterSuccess,
-            onRegisterFailure,
-            onRegisterProgress
-        );
+        if( validateFormData() ) {
+            var formData = getUserFormData();
+            ajax.postWithProgress(
+                '../server/action/user/new.php',
+                formData,
+                onRegisterSuccess,
+                onRegisterFailure,
+                onRegisterProgress
+            );
+        }
+
+    }
+
+    function validateFormData(){
+        if( findViewById('username').value.length > 0 ) {
+            if( findViewById('email').value.length > 0 ) {
+                if( findViewById('password').value.length > 0 ) {
+                    if( findViewById('type').value.length > 0) {
+                        if( findViewById('phone').value.length > 0) {
+                            return true;
+                        }else{
+                            alert('Ingresa un número telefónico');
+                        }
+                    }else{
+                        alert('Ingresa el tipo de usuario');
+                    }
+                }else{
+                    alert('El password no puede ser vacio');
+                }
+            }else{
+                alert('El correo electrónico no debe ser vacio');
+            }
+        }else{
+            alert('El nombre de usuario no puede ser vacio');
+        }
+        return false;
     }
 
     function onRegisterSuccess( data ){
