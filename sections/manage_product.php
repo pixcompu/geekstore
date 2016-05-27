@@ -10,7 +10,46 @@
         a[href='manage_product.php']{
             background-color: white;
         }
+        body{
+            background-color: black;
+        }
+        #products tr:hover{
+            cursor: pointer;
+        }
+        #products tr th{
+            background-color: darkgray;
+            padding: 1%;
+        }
+        #products table{
+            margin-top: 5%;
+        }
+        #products table button{
+            padding: 10px;
+            border: 0;
+            background-color: red;
+            color: white;
+            margin: 2px;
+        }
+        #products table button:hover{
+            cursor: pointer;
+            background-color: darkred;
+        }
+        #products tr td{
+            text-align: center;
+        }
+        #products tr:nth-child(odd) {
+            background-color: white;
+        }
+        #products tr:nth-child(even) {
+            background-color: lightgrey;
+        }
+        #products{
+            margin-left: 20%;
+            margin-right: 20%;
+            width: 60%;
+        }
     </style>
+    <link rel="stylesheet" href="../style/forms.css">
 </head>
 <body>
 <?php require_once('navbar.php'); ?>
@@ -42,6 +81,11 @@
     }
 
     function getProductForm() {
+        var container = newDiv();
+        container.setAttribute('id', 'container');
+        var formDiv = newDiv();
+        formDiv.setAttribute('id', 'form');
+
         var form = newForm('', 'POST', 'form');
         var name = newFormGroupInput('Nombre : ', 'text', 'name', 'name');
         var description = newFormGroupTextArea('Descripcion : ', 'description', 'description');
@@ -52,7 +96,10 @@
                 form,
                 [name, description, price, quantity, file]
         );
-        return form;
+
+        formDiv.appendChild(form);
+        container.appendChild(formDiv);
+        return container;
     }
     function showRegister(){
         notifier.expectsHTMLContent();
@@ -70,10 +117,13 @@
         findViewById('image').setAttribute("accept", ".jpg,.png,.jpeg,.mp4");
     }
 
-    function getProductFormData() {
-        var file = findViewById('image').files[0];
+    function getProductFormData(id) {
         var formData = new FormData();
-        formData.append('image', file);
+        if (!findViewById('image').value) {
+            var file = findViewById('image').files[0];
+            formData.append('image', file);
+        }
+        formData.append('id', id);
         formData.append('name', findViewById('name').value);
         formData.append('description', findViewById('description').value);
         formData.append('price', findViewById('price').value);
@@ -119,14 +169,6 @@
             deleteButton.setAttribute('data-id', product['id']);
             var row = newTableRow([ product['id'], product['name'], product['price'], product['quantity'], deleteButton]);
             row.setAttribute('data-product', JSON.stringify(product));
-            row.onmouseover = function(){
-                this.style.backgroundColor = 'lightgray';
-                this.style.cursor = 'pointer';
-            };
-            row.onmouseout = function () {
-                this.style.backgroundColor = 'white';
-                this.style.cursor = 'arrow';
-            };
             row.onclick = showUpdateForm;
             table.appendChild(row);
         }
@@ -149,8 +191,8 @@
         );
     }
 
-    function updateProduct( data ) {
-        var formData = getProductFormData();
+    function updateProduct( id ) {
+        var formData = getProductFormData( id );
         ajax.postWithProgress(
                 '../server/action/product/update.php',
                 formData,
@@ -189,7 +231,7 @@
                 form.outerHTML,
                 function(confirm){
                     if( confirm ){
-                        updateProduct();
+                        updateProduct(product['id']);
                     }
                 }
         );

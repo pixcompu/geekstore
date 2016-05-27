@@ -7,7 +7,7 @@
  */
 class FileUploader{
 
-    private $uploadFolder = '../resources/images/catalog/';
+    private $uploadFolder = '../../../resources/images/catalog/';
     private $uploadPath = 'resources/images/catalog/';
     private $uploadedFileURL;
 

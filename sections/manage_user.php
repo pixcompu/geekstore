@@ -50,6 +50,7 @@
             width: 60%;
         }
     </style>
+    <link rel="stylesheet" href="../style/forms.css">
     <script src="../javascript/adminSession.js"></script>
 </head>
 <body>
@@ -85,19 +86,20 @@ require_once('scripts.php');
         var table = newTable( newTableHeader(['USUARIO','CORREO','TIPO','TELEFONO', '']) );
         for( var i = 0; i < users.length; i++ ){
             var user = users[i];
-            var deleteButton = newButton('X', showDeleteDialog);
-            deleteButton.setAttribute('data-id', user['username']);
-            var row = newTableRow([ user['username'], user['email'], user['type'], user['phone'], deleteButton]);
-            row.setAttribute('data-user', JSON.stringify(user));
-            row.onclick = showUpdateForm;
-            table.appendChild(row);
+            if(user['username'] != JSON.parse(cookieManager.getValue('user'))['username']){
+                var deleteButton = newButton('X', showDeleteDialog);
+                deleteButton.setAttribute('data-id', user['username']);
+                var row = newTableRow([ user['username'], user['email'], user['type'], user['phone'], deleteButton]);
+                row.setAttribute('data-user', JSON.stringify(user));
+                row.onclick = showUpdateForm;
+                table.appendChild(row);
+            }
         }
         findViewById('users').appendChild(table);
     }
 
     function showUpdateForm(){
         var user = JSON.parse(this.getAttribute('data-user'));
-        console.log(JSON.stringify(user));
         var form = getUserForm();
         notifier.expectsHTMLContent();
         notifier.setTheme( MODAL_BLUE );
@@ -111,12 +113,52 @@ require_once('scripts.php');
             }
         );
         findViewById('username').value = user['username'];
+        findViewById('username').disabled = true;
         findViewById('email').value = user['email'];
         findViewById('password').value = user['password'];
         findViewById('type').value = user['type'];
         findViewById('phone').value = user['phone'];
     }
 
+    function updateProduct() {
+        var formData = getUserFormData();
+        ajax.postWithProgress(
+            '../server/action/user/update.php',
+            formData,
+            onUpdateSuccess,
+            onUpdateFailure,
+            onUpdateProgress
+        );
+    }
+
+    function onUpdateProgress( total, current) {
+        appendLog('UPDATE', total + 'of' + current);
+    }
+
+    function onUpdateFailure( error ){
+        appendLog('UPDATE', error);
+    }
+
+    function onUpdateSuccess(){
+        notifier.setTheme( MODAL_GREEN );
+        notifier.dontExpectsHTMLContent();
+        notifier.alert(
+            'Éxito',
+            'El usuario ha sido actualizado exitosamente',
+            refreshPage
+        );
+    }
+
+    function getUserFormData() {
+        var formData = new FormData();
+        formData.append('username', findViewById('username').value);
+        formData.append('email', findViewById('email').value);
+        formData.append('password', findViewById('password').value);
+        formData.append('type', findViewById('type').value);
+        formData.append('phone', findViewById('phone').value);
+        return formData;
+    }
+    
     function showDeleteDialog(){
         event.stopPropagation();
         var id = this.getAttribute('data-id');
@@ -149,7 +191,7 @@ require_once('scripts.php');
         notifier.setTheme( MODAL_ORANGE );
         notifier.alert(
             'Eliminacion Exitosa',
-            'El producto ha sido eliminado con exito',
+            'El usuario ha sido eliminado con exito',
             refreshPage
         );
     }
@@ -159,13 +201,7 @@ require_once('scripts.php');
     }
 
     function showRegister(){
-        var form = newForm('', 'POST', 'form');
-        var username = newFormGroupInput('Usuario: ', 'text', 'username', 'username');
-        var password = newFormGroupInput('Contraseña :', 'password', 'password', 'password');
-        var type = newFormGroupSelect('Tipo : ', ['administrador', 'usuario'], 'type', 'type');
-        appendItemsTo( form,
-        [username, password, type]);
-
+        var form = getUserForm();
         notifier.expectsHTMLContent();
         notifier.setTheme( MODAL_BLUE );
         notifier.confirm(
@@ -173,26 +209,60 @@ require_once('scripts.php');
                 form.outerHTML,
                 function( confirm ){
                     if( confirm ){
-                        console.log(findViewById('username').value);
-                        console.log(findViewById('password').value);
-                        console.log(findViewById('type').value);
+                        registerUser();
                     }
                 }
         );
     }
 
+    function registerUser(){
+        var formData = getUserFormData();
+        ajax.postWithProgress(
+            '../server/action/user/new.php',
+            formData,
+            onRegisterSuccess,
+            onRegisterFailure,
+            onRegisterProgress
+        );
+    }
+
+    function onRegisterSuccess( data ){
+        notifier.setTheme( MODAL_GREEN );
+        notifier.dontExpectsHTMLContent();
+        notifier.alert(
+            'Éxito',
+            'El usuario ha sido registrado exitosamente',
+            refreshPage
+        );
+    }
+
+    function onRegisterFailure( error ){
+        appendLog('REGISTER', error);
+    }
+
+    function onRegisterProgress( total, current ){
+        appendLog('REGISTER', 'Total : ' + total + ' Current : ' + current);
+    }
+
     function getUserForm() {
+        var container = newDiv();
+        container.setAttribute('id', 'container');
+        var formDiv = newDiv();
+        formDiv.setAttribute('id', 'form');
+
         var form = newForm('', 'POST', 'form');
         var username = newFormGroupInput('Nombre de Usuario : ', 'text', 'username', 'username');
         var email = newFormGroupInput('Correo Electronico : ','email', 'email', 'email');
-        var password = newFormGroupInput('Password : ', 'password', 'price', 'price');
+        var password = newFormGroupInput('Password : ', 'password', 'password', 'password');
         var type = newFormGroupSelect('Tipo : ', ['admin', 'user'], 'type', 'type');
         var phone = newFormGroupInput('Telefono : ', 'text', 'phone', 'phone');
         appendItemsTo(
             form,
-            [email, password, type, phone]
+            [username, email, password, type, phone]
         );
-        return form;
+        formDiv.appendChild(form);
+        container.appendChild(formDiv);
+        return container;
     }
 </script>
 </body>
