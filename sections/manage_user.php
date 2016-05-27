@@ -49,6 +49,19 @@
             margin-right: 20%;
             width: 60%;
         }
+        #modal_window_body form input{
+            border-bottom: 2px solid blue;
+        }
+        #modal_window_body select{
+            padding: 2%;
+        }
+        #modal_window_body label{
+            font-size: 0.6em;
+        }
+        #modal_window_body input{
+            font-size: 0.5em;
+        }
+
     </style>
     <link rel="stylesheet" href="../style/forms.css">
     <script src="../javascript/adminSession.js"></script>
@@ -249,6 +262,7 @@ require_once('scripts.php');
         container.setAttribute('id', 'container');
         var formDiv = newDiv();
         formDiv.setAttribute('id', 'form');
+        var breakLine = newElement('br');
 
         var form = newForm('', 'POST', 'form');
         var username = newFormGroupInput('Nombre de Usuario : ', 'text', 'username', 'username');
@@ -258,7 +272,7 @@ require_once('scripts.php');
         var phone = newFormGroupInput('Telefono : ', 'text', 'phone', 'phone');
         appendItemsTo(
             form,
-            [username, email, password, type, phone]
+            [username, breakLine,  email, breakLine, password, breakLine, type, breakLine, phone]
         );
         formDiv.appendChild(form);
         container.appendChild(formDiv);
