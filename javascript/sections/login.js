@@ -26,7 +26,6 @@ function validateFields(){
         }else{
             alert('La contraseña no debe ser vacia');
         }
-
     }else{
         alert('El campo usuario no puede ser vacio');
     }
@@ -37,7 +36,7 @@ function init(){
     if( cookieManager.check('user') ){
         redirectTo('principal.php');
     }
-    document.form.btnLogin.onclick = function(){
+    findViewById('btnLogin').onclick = function(){
         if( validateFields() ){
             login();
         }

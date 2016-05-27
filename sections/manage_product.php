@@ -57,7 +57,7 @@
 <div id="products"></div>
 <button class="floating-button" onclick="showRegister()">+</button>
 <?php
-    require_once('scripts.php');
+require_once('scripts.php');
 ?>
 <script src="../javascript/adminSession.js"></script>
 <script>
@@ -66,9 +66,9 @@
     function init(){
         ajax.expectJsonProperties(['status']);
         ajax.get(
-                '../server/action/product/get.php',
-                onFetchSuccess,
-                onFetchFailure
+            '../server/action/product/get.php',
+            onFetchSuccess,
+            onFetchFailure
         );
     }
 
@@ -77,7 +77,7 @@
         showProducts( data );
     }
 
-        function onFetchFailure(error){
+    function onFetchFailure(error){
         appendLog('FETCH', error);
     }
 
@@ -94,8 +94,8 @@
         var quantity = newFormGroupInput('Cantidad en Stock : ', 'number', 'quantity', 'quantity');
         var file = newFormGroupInput('Imagen : ', 'file', 'image', 'image');
         appendItemsTo(
-                form,
-                [name, description, price, quantity, file]
+            form,
+            [name, description, price, quantity, file]
         );
 
         formDiv.appendChild(form);
@@ -107,23 +107,22 @@
         notifier.setTheme( MODAL_GREEN );
         var form = getProductForm();
         notifier.confirm(
-                'Registrar Producto',
-                form.outerHTML,
-                function( confirm ){
-                    if( confirm ){
-                        register();
-                    }
+            'Registrar Producto',
+            form.outerHTML,
+            function( confirm ){
+                if( confirm ){
+                    register();
                 }
+            }
         );
         findViewById('image').setAttribute("accept", ".jpg,.png,.jpeg,.mp4");
     }
 
     function getProductFormData(id) {
         var formData = new FormData();
-        if (!findViewById('image').value) {
-            var file = findViewById('image').files[0];
-            formData.append('image', file);
-        }
+        var file = findViewById('image').files[0];
+        formData.append('image', file);
+
         formData.append('id', id);
         formData.append('name', findViewById('name').value);
         formData.append('description', findViewById('description').value);
@@ -170,9 +169,9 @@
         notifier.setTheme( MODAL_GREEN );
         notifier.dontExpectsHTMLContent();
         notifier.alert(
-                'Éxito',
-                'El producto ha sido registrado exitosamente',
-                refreshPage
+            'Éxito',
+            'El producto ha sido registrado exitosamente',
+            refreshPage
         );
     }
 
@@ -205,13 +204,13 @@
         notifier.dontExpectsHTMLContent();
         notifier.setTheme( MODAL_RED );
         notifier.confirm(
-                'Eliminar',
-                'A continuación se eliminara el producto con id =' + id + ', ¿Desea Continuar?',
-                function(confirm){
-                    if( confirm ){
-                        deleteProduct(id);
-                    }
+            'Eliminar',
+            'A continuación se eliminara el producto con id =' + id + ', ¿Desea Continuar?',
+            function(confirm){
+                if( confirm ){
+                    deleteProduct(id);
                 }
+            }
         );
     }
 
@@ -240,9 +239,9 @@
         notifier.setTheme( MODAL_GREEN );
         notifier.dontExpectsHTMLContent();
         notifier.alert(
-                'Éxito',
-                'El producto ha sido actualizado exitosamente',
-                refreshPage
+            'Éxito',
+            'El producto ha sido actualizado exitosamente',
+            refreshPage
         );
     }
 
@@ -252,13 +251,13 @@
         notifier.expectsHTMLContent();
         notifier.setTheme( MODAL_BLUE );
         notifier.confirm(
-                'Actualizar',
-                form.outerHTML,
-                function(confirm){
-                    if( confirm ){
-                        updateProduct(product['id']);
-                    }
+            'Actualizar',
+            form.outerHTML,
+            function(confirm){
+                if( confirm ){
+                    updateProduct(product['id']);
                 }
+            }
         );
         findViewById('name').value = product.name;
         findViewById('description').value = product.description;
@@ -270,10 +269,10 @@
         var params = {};
         params['id'] = id;
         ajax.post(
-                '../server/action/product/delete.php',
-                params,
-                onDeleteSuccess,
-                onDeleteFailure
+            '../server/action/product/delete.php',
+            params,
+            onDeleteSuccess,
+            onDeleteFailure
         );
     }
 
@@ -281,9 +280,9 @@
         notifier.dontExpectsHTMLContent();
         notifier.setTheme( MODAL_ORANGE );
         notifier.alert(
-                'Eliminacion Exitosa',
-                'El producto ha sido eliminado con exito',
-                refreshPage
+            'Eliminacion Exitosa',
+            'El producto ha sido eliminado con exito',
+            refreshPage
         );
     }
 

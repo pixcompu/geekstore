@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] . '/store/server/enviroment.php');
+require_once('../../enviroment.php');
 require_once(BASE_SERVER_CLASS_PÁTH . 'Executor.php');
 require_once(BASE_SERVER_CLASS_PÁTH . 'FileUploader.php');
 require_once(BASE_SERVER_CLASS_PÁTH . 'SystemException.php');
