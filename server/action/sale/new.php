@@ -2,23 +2,20 @@
 require_once('../../autoloader.php');
 
 try{
-    //$products = '"sale":{"user":"pix", "products":[{"id":1, "quantity":1},{"id":9, "quantity":2}]}';
-    $saleAttributes = json_decode($_POST['sale'], true);
-    $username = $saleAttributes["user"];
+    $username = $_POST["user"];
     $today = date("Y-m-d");
 
     $sale = new Sale();
     $saleID = $sale->getLastSale() + 1;
     $total = 0;
 
-    foreach ($saleAttributes["products"] as $saleItem){
-
+    $saleItems = json_decode($_POST["products"], true);
+    foreach ($saleItems as $saleItem){
         $product = new Product();
         $product->setId($saleItem['id']);
         $productAttributes = $product->getById();
         $product->setQuantity($productAttributes['quantity'] - $saleItem['quantity']);
         $product->update();
-
 
         $itemSubtotal = $productAttributes["price"] * $saleItem['quantity'];
         $total += $itemSubtotal;;

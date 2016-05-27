@@ -20,14 +20,15 @@
         }
 
         #map {
-            width: 350px;
-            height: 350px;
+            width: 280px;
+            height: 280px;
             border-radius: 10%;
         }
 
         #container{
-            margin-top: 100px;
-            margin-left: 100px;
+            margin-top: 5%;
+            margin-left: 15%;
+            margin-right: 15%;
         }
 
         #email{
@@ -47,51 +48,65 @@
             font-size: 20px;
         }
 
+        #options button img{
+            width: 20px;
+            height: 20px;
+        }
+
+        #form-map, #form-message{
+            float: left;
+            width: 50%;
+            border: 0;
+            margin: 0;
+        }
+
         #send{
-            width: 200px;
-            height: 30px;
+
+            border-radius: 5%;
+            border: none;
+            font-family: game, sans-serif;
+            color: white;
+            background-color: blue;
+            width: inherit;
+            padding: 1%;
             margin: 20px;
 
         }
-
-        #container>div{
-            width: 100px;
+        #send:hover{
+            background-color: dodgerblue;
+            cursor: pointer;
         }
 
-        table{
-            text-align: center;
-            margin-left: 20%;
-            margin-right: 20%;
+        #forms button img{
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
         }
 
-        td{
-            padding: 50px;
-        }
         a[href='contact.php']{
             background-color: white;
         }
+
     </style>
+    <link rel="stylesheet" href="../style/forms.css">
 </head>
 <body>
 <?php require_once('navbar.php'); ?>
-<img src="../resources/images/icons/pacman.gif" id="bird" alt="">
+<img src="../resources/images/icons/pacman.gif" id="pacman" alt="">
 <div id="container">
-    <table>
-        <tr>
-            <td>
-                <p>Encuentranos en esta dirección</p>
-                <div id="map"></div>
-            </td>
-            <td>
-                <p>Envíanos un correo.</p>
-                <div >
-                    <input id="email" type="email" placeholder="Correo electrónico"> <br>
-                    <textarea id="message"></textarea><br>
-                    <button id="send">Enviar</button><br>
-                </div>
-            </td>
-        </tr>
-    </table>
+    <div id="form-map">
+        <p>Ven a visitarnos</p>
+        <div id="map"></div>
+    </div>
+    <div id="form-message">
+        <p>Envíanos un correo.</p>
+        <div id="forms">
+            <input id="email" name="emailInput" type="email" placeholder="Correo electrónico"> <br>
+            <textarea id="message" name="messageInput"></textarea><br>
+            <button id="send" name="btnSend"><img src="../resources/images/icons/inky.png" alt="">Enviar</button><br>
+        </div>
+    </div>
+
 </div>
 <?php
 require_once('scripts.php');
@@ -115,5 +130,55 @@ require_once('scripts.php');
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTeBniIi0z5iw6yhE4FqOT7SSbUvM3qe0&callback=initMap">
 </script>
+<script type="text/javascript">
+    window.onload = init;
+
+    function init(){
+        findViewById('send').onclick = function(){
+            if( validateFields() ){
+                sendMessage();
+            }
+        }
+    }
+
+
+    function validateFields(){
+        if( findViewById('email').value.length > 0 ){
+            if( findViewById('message').value.length > 0 ){
+                return true;
+            }else{
+                alert('El mensaje no puede ser vacío');
+            }
+
+        }else{
+            alert('El correo no puede ser vacio');
+        }
+        return false;
+    }
+
+
+    function sendMessage() {
+        var params = {};
+        params['destinatary'] = findViewById('email').value;
+        params['message'] = findViewById('message').value;
+        ajax.expectJsonProperties(['status']);
+        ajax.post(
+            '../server/action/mail/send.php',
+            params,
+            onSendSuccess,
+            onSendFailure
+        );
+    }
+    function onSendSuccess(response){
+        alert('Mensaje enviado '+response);
+
+    }
+
+    function onSendFailure(error){
+        alert('No se pudo enviar el mensaje' + error);
+    }
+
+</script>
+
 </body>
 </html>
