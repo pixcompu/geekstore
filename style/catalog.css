@@ -122,6 +122,10 @@ input {
     height: 60%;
 }
 
+.details-price {
+    margin-top: 12%;
+}
+
 .details-panel {
     overflow: hidden;
 }
@@ -129,4 +133,5 @@ input {
 .details-panel-image {
     width: 40%;
     float: left;
+    margin: 2%;
 }

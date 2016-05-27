@@ -89,21 +89,23 @@
  function showDetails(){
      var product = JSON.parse(this.getAttribute('data-item'));
      var detailsPanel = newDiv();
+
      var image = newImg(product['image']);
      var title = newH2(product['name']);
      var description = newParagraph(product['description']);
      var price = newParagraph('Precio : $' + product['price']);
      var existance = newParagraph('En existencia : ' + product['quantity']);
-     var buttonCart = newButton('Agregar a mi carrito', null);
-     buttonCart.setAttribute( 'data-item', JSON.stringify(product) );
-     buttonCart.onclick = addItem;
+    // var buttonCart = newButton('Agregar a mi carrito', null);
+    // buttonCart.setAttribute( 'data-item', JSON.stringify(product) );
+    // buttonCart.onclick = addItem;
 
+     addClassTo(price, 'details-price');
      addClassTo(detailsPanel, 'details-panel');
      addClassTo(image, 'details-panel-image');
 
      appendItemsTo(
          detailsPanel,
-         [image, title, description, price, existance, buttonCart]
+         [image, title, description, price, existance]
      );
 
      notifier.expectsHTMLContent();

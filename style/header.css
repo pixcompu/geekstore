@@ -32,6 +32,7 @@ body{
     float: left;
     text-align: center;
 }
+
 #session-options li{
     float: right;
     text-align: center;
@@ -59,7 +60,6 @@ body{
 #session p{
     height: 100%;
     background: white;
-    padding: 5px;
 }
 #session-options{
     height: 100%;
@@ -74,6 +74,7 @@ body{
     margin-top: 5%;
     font-size: 2em;
 }
+
 a.navbar-item{
     background: yellow;
 }
