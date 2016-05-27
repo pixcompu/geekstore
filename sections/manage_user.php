@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="../resources/images/tab/tab_icon.png">
+    <?php
+    $sectionTitle = "GeekStore - Usuarios";
+    require_once('header.php');
+    ?>
     <link rel="stylesheet" href="../style/notifier.css">
     <link rel="stylesheet" href="../style/floating_button.css">
-    <title>GeekStore - Administrar Usuarios</title>
 </head>
 <body>
+<?php require_once('navbar.php'); ?>
 <div id="users"></div>
 <button class="floating-button" onclick="showRegister()">+</button>
-<script src="../javascript/ajax.js"></script>
-<script src="../javascript/factory.js"></script>
-<script src="../javascript/notifier.js"></script>
-<script src="../javascript/cookies.js"></script>
+<?php
+require_once('scripts.php');
+?>
+<script src="../javascript/adminSession.js"></script>
 <script>
 
     window.onload = init;

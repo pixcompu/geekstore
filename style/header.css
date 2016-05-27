@@ -4,7 +4,6 @@
 }
 body{
     font-family: game, serif;
-    background: lightgrey url('../resources/images/background/space.png') repeat;
 }
 #header{
     background-color: midnightblue;

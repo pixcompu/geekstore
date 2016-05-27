@@ -4,13 +4,17 @@ body{
     width: 100%;
     height: 100%;
 }
+
 #principal{
     width: 100%;
 }
 #content{
     width: 100%;
-    height: 78vh;
+    height: 76vh;
     background: black;
+}
+p{
+    word-wrap: break-word;
 }
 .left{
     float: left;

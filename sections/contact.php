@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>GeekStore - Contacto</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php
+    $sectionTitle = "GeekStore - Contacto";
+    require_once('header.php');
+    ?>
     <link rel="stylesheet" href="../style/star_wars_effect.css">
-    <link rel="icon" href="../resources/images/tab/tab_icon.png">
-
-
     <style type="text/css">
         html, body { height: 100%; margin: 0; padding: 0; }
 
@@ -19,7 +16,6 @@
 
         body{
             font-family: game, serif;
-
             background: lightgrey url('../resources/images/background/pacman2.jpg') center;
         }
 
@@ -46,16 +42,16 @@
             margin: 20px;
         }
 
+        #container p {
+            color: #fefefe;
+            font-size: 20px;
+        }
+
         #send{
             width: 200px;
             height: 30px;
             margin: 20px;
 
-        }
-
-        p {
-            color: #fefefe;
-            font-size: 20px;
         }
 
         #container>div{
@@ -74,12 +70,9 @@
     </style>
 </head>
 <body>
-
+<?php require_once('navbar.php'); ?>
 <img src="../resources/images/icons/pacman.gif" id="bird" alt="">
-
-
 <div id="container">
-
     <table>
         <tr>
             <td>
@@ -95,19 +88,11 @@
                 </div>
             </td>
         </tr>
-
-
     </table>
-
-
-
-
-
-
 </div>
-
-
-
+<?php
+require_once('scripts.php');
+?>
 <script type="text/javascript">
     var map;
     function initMap() {

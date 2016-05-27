@@ -13,14 +13,14 @@
 }
 @keyframes bird-fly {
     0%{
-        margin-top: 15%;
+        margin-top: 3%;
     }
     50%{
         margin-left: 50%;
-        margin-top: 10%;
+        margin-top: 1%;
     }
     100%{
-        margin-top: 15%;
+        margin-top: 3%;
         margin-left: 100%;
     }
 }

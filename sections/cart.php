@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="../resources/images/tab/tab_icon.png">
-    <title>GeekStore - Mi Carrito</title>
-    <link rel="stylesheet" href="../style/notifier.css">
+    <?php
+    $sectionTitle = "GeekStore - Carrito";
+    require_once('header.php');
+    ?>
 </head>
 <body>
+<?php require_once('navbar.php'); ?>
 <div id="cart"></div>
 <div id="options">
     <button id="btn_buy_cart_items">Realizar Compra</button>
     <button id="btn_drop_cart">Vaciar Carrito</button>
     <a href="catalog.php">Seguir Comprando</a>
 </div>
-<script src="../javascript/notifier.js"></script>
-<script src="../javascript/cookies.js"></script>
-<script src="../javascript/factory.js"></script>
+<?php require_once('scripts.php'); ?>
 <script>
 
     function dropCart() {
@@ -50,13 +47,13 @@
         notifier.expectsHTMLContent();
         notifier.setTheme(MODAL_GREEN);
         notifier.confirm(
-                '¿Desea realizar su compra?',
-                ticket.outerHTML,
-                function(confirm){
-                    if(confirm){
-                        alert('TODO: Procesar');
-                    }
+            '¿Desea realizar su compra?',
+            ticket.outerHTML,
+            function(confirm){
+                if(confirm){
+                    alert('TODO: Procesar');
                 }
+            }
         );
     }
 
@@ -72,7 +69,7 @@
                 image.style.width = '50px';
                 image.style.height = '50px';
                 var row =
-                        newTableRow([ image, product['id'], product['name'], product['price'], product['cart_quantity'], product['subtotal'], deleteButton]);
+                    newTableRow([ image, product['id'], product['name'], product['price'], product['cart_quantity'], product['subtotal'], deleteButton]);
                 table.appendChild(row);
             }
         }

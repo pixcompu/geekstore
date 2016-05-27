@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="../resources/images/tab/tab_icon.png">
-    <title>GeekStore - Iniciar Sesión</title>
-    <link rel="stylesheet" href="../style/notifier.css">
+    <?php
+    $sectionTitle = "GeekStore - Iniciar Sesión";
+    require_once('header.php');
+    ?>
     <link rel="stylesheet" href="../style/forms.css">
 </head>
 <body>
+<?php require_once('navbar.php'); ?>
 <div class="container">
   <div class="form">
     <h1>Iniciar Sesión</h1>
@@ -20,10 +19,9 @@
     </form>
   </div>
 </div>
-<script src="../javascript/ajax.js"></script>
-<script src="../javascript/cookies.js"></script>
-<script src="../javascript/notifier.js"></script>
-<script src="../javascript/factory.js"></script>
+<?php
+require_once('scripts.php');
+?>
 <script>
     window.onload = init;
 
@@ -60,7 +58,6 @@
         if( cookieManager.check('user') ){
             redirectTo('principal.php');
         }
-
         document.form.btnLogin.onclick = function(){
             if( validateFields() ){
                 login();

@@ -1,37 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="../resources/images/tab/tab_icon.png">
-    <title>GeekStore - Administrar Productos</title>
-    <link rel="stylesheet" href="../style/notifier.css">
+    <?php
+    $sectionTitle = "GeekStore - Productos";
+    require_once('header.php');
+    ?>
     <link rel="stylesheet" href="../style/floating_button.css">
 </head>
 <body>
+<?php require_once('navbar.php'); ?>
 <div id="products"></div>
 <button class="floating-button" onclick="showRegister()">+</button>
-<script src="../javascript/ajax.js"></script>
-<script src="../javascript/factory.js"></script>
-<script src="../javascript/notifier.js"></script>
-<script src="../javascript/cookies.js"></script>
+<?php
+    require_once('scripts.php');
+?>
+<script src="../javascript/adminSession.js"></script>
 <script>
     window.onload = init;
 
-    function validateAdmin() {
-        if( !cookieManager.check('user') ){
-            redirectTo('login.html');
-        }else{
-            var user = JSON.parse(cookieManager.getValue('user'));
-            if( user['type'] !== 'admin' ){
-                redirectTo('principal.html');
-            }
-        }
-    }
-
     function init(){
-        validateAdmin();
         ajax.expectJsonProperties(['status']);
         ajax.get(
                 '../server/action/product/get.php',

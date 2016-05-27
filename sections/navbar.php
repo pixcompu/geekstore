@@ -1,6 +1,6 @@
 <div id="header">
     <div id="brand">
-        <img src="../resources/images/tab/tab_icon.png" alt="">
+        <a href="principal.php"><img src="../resources/images/tab/tab_icon.png" alt=""></a>
         <p>GeekStore</p>
     </div>
     <div id="session">
