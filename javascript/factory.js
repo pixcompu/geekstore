@@ -227,6 +227,12 @@ newFormGroupSelect = function(labelText, optionsArray, name, id ){
     );
 };
 
+newOption = function(value, text){
+    var option = newElement('option', text);
+    option.value = value;
+    return option;
+};
+
 function makeRowWith(cellTag, array){
     var row = document.createElement('tr');
     for(var i = 0; i<array.length; i++){
