@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="../style/forms.css">
     <style>
         a[href='login.php']{
-            background-color: white;
+            background-color: black;
+            color : white;
         }
     </style>
 </head>
