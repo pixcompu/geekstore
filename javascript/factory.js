@@ -52,6 +52,11 @@ findViewById = function (id) {
     }
 };
 
+appendText = function(element, elementText){
+    var text = document.createTextNode(elementText);
+    element.appendChild(text);
+}
+
 clearElement = function (element) {
     element.innerHTML = '';
 };

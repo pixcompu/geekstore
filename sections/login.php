@@ -6,6 +6,11 @@
     require_once('header.php');
     ?>
     <link rel="stylesheet" href="../style/forms.css">
+    <style>
+        a[href='login.php']{
+            background-color: white;
+        }
+    </style>
 </head>
 <body>
 <?php require_once('navbar.php'); ?>

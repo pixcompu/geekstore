@@ -6,6 +6,11 @@
     require_once('header.php');
     ?>
     <link rel="stylesheet" href="../style/floating_button.css">
+    <style>
+        a[href='manage_product.php']{
+            background-color: white;
+        }
+    </style>
 </head>
 <body>
 <?php require_once('navbar.php'); ?>

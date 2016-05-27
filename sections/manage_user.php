@@ -7,6 +7,11 @@
     ?>
     <link rel="stylesheet" href="../style/notifier.css">
     <link rel="stylesheet" href="../style/floating_button.css">
+    <style>
+        a[href='manage_user.php']{
+            background-color: white;
+        }
+    </style>
 </head>
 <body>
 <?php require_once('navbar.php'); ?>

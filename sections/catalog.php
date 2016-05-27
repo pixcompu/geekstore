@@ -5,6 +5,11 @@
     $sectionTitle = "GeekStore - Catálogo";
     require_once('header.php');
     ?>
+    <style>
+        a[href='catalog.php']{
+            background-color: white;
+        }
+    </style>
 </head>
 <body>
 <?php require_once('navbar.php'); ?>

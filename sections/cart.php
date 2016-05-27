@@ -5,6 +5,11 @@
     $sectionTitle = "GeekStore - Carrito";
     require_once('header.php');
     ?>
+    <style>
+        a[href='cart.php']{
+            background-color: white;
+        }
+    </style>
 </head>
 <body>
 <?php require_once('navbar.php'); ?>
