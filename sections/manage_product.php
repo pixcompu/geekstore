@@ -49,6 +49,32 @@
             margin-right: 20%;
             width: 60%;
         }
+        #modal_window_body{
+            margin: 1%;
+        }
+        #modal_window_body form input{
+            border-bottom: 2px solid blue;
+        }
+        #modal_window_body label{
+            font-size: 0.6em;
+        }
+        #modal_window_body input{
+            font-size: 0.5em;
+        }
+        #modal_window_body textarea{
+            border: none;
+            width: 70%;
+            height: 80px;
+            font-family: game, sans-serif;
+            font-size: 0.4em;
+            border-bottom: 2px solid blue;
+        }
+        #description-wrapper label{
+            display: block;
+            vertical-align: middle;
+            margin-top: 1%;
+            margin-bottom: 1%;
+        }
     </style>
     <link rel="stylesheet" href="../style/forms.css">
 </head>
@@ -90,6 +116,7 @@ require_once('scripts.php');
         var form = newForm('', 'POST', 'form');
         var name = newFormGroupInput('Nombre : ', 'text', 'name', 'name');
         var description = newFormGroupTextArea('Descripcion : ', 'description', 'description');
+        description.id = 'description-wrapper';
         var price = newFormGroupInput('Precio : ', 'number', 'price', 'price');
         var quantity = newFormGroupInput('Cantidad en Stock : ', 'number', 'quantity', 'quantity');
         var file = newFormGroupInput('Imagen : ', 'file', 'image', 'image');
@@ -104,7 +131,7 @@ require_once('scripts.php');
     }
     function showRegister(){
         notifier.expectsHTMLContent();
-        notifier.setTheme( MODAL_GREEN );
+        notifier.setTheme( MODAL_BLUE );
         var form = getProductForm();
         notifier.confirm(
             'Registrar Producto',
@@ -122,7 +149,6 @@ require_once('scripts.php');
         var formData = new FormData();
         var file = findViewById('image').files[0];
         formData.append('image', file);
-
         formData.append('id', id);
         formData.append('name', findViewById('name').value);
         formData.append('description', findViewById('description').value);
