@@ -24,6 +24,34 @@
         margin-left: 100%;
     }
 }
+
+#pacman{
+    position: fixed;
+    -webkit-animation:pacman-eat 20s linear 0s infinite;
+    -o-animation:pacman-eat 20s linear 0s infinite;
+    animation:pacman-eat 20s linear 0s infinite;
+    -webkit-transform: scale(0.4);
+    -moz-transform: scale(0.4);
+    -ms-transform: scale(0.4);
+    -o-transform: scale(0.4);
+    transform: scale(0.4);
+    cursor: pointer;
+    margin-left: -15%;
+}
+@keyframes pacman-eat {
+    0%{
+        margin-top: 0%;
+    }
+    50%{
+        margin-left: 50%;
+        margin-top: 0%;
+    }
+    100%{
+        margin-top: 0%;
+        margin-left: 100%;
+    }
+}
+
 #content{
     overflow: hidden;
     text-align: center;
