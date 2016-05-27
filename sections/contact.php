@@ -20,18 +20,17 @@
 <img src="../resources/images/icons/pacman.gif" id="pacman" alt="">
 <div id="container">
     <div id="form-map">
-        <p>Ven a visitarnos</p>
+        <!--<p>Ven a visitarnos</p>-->
         <div id="map"></div>
     </div>
-    <div id="form-message">
-        <p>Envíanos un correo.</p>
-        <div id="forms">
+    <div class="container">
+        <div class="form">
+            <h1>Envíanos un correo.</h1>
             <input id="email" name="emailInput" type="email" placeholder="Correo electrónico"> <br>
-            <textarea id="message" name="messageInput"></textarea><br>
+            <textarea id="message" name="messageInput" placeholder="Escribe tus comentarios y sugerencias"></textarea><br>
             <button id="send" name="btnSend"><img src="../resources/images/icons/inky.png" alt="">Enviar</button><br>
         </div>
     </div>
-
 </div>
 <?php
 require_once('scripts.php');
