@@ -216,15 +216,16 @@
     }
 
     function updateProduct( id ) {
-        var formData = getProductFormData( id );
-        ajax.postWithProgress(
-                '../server/action/product/update.php',
-                formData,
-                onUpdateSuccess,
-                onUpdateFailure,
-                onUpdateProgress
-        );
-
+        if ( validateFormData() ) {
+          var formData = getProductFormData( id );
+          ajax.postWithProgress(
+                  '../server/action/product/update.php',
+                  formData,
+                  onUpdateSuccess,
+                  onUpdateFailure,
+                  onUpdateProgress
+          );
+        }
     }
 
     function onUpdateProgress( total, current) {
