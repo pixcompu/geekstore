@@ -8,21 +8,23 @@
 require_once('../../autoloader.php');
 
 try{
-    
-    $fileUploader = new FileUploader();
-    $fileUploader->upload('image');
+
     $name = $_POST['name'];
     $description = $_POST['description'];
     $price = $_POST['price'];
     $quantity = $_POST['quantity'];
-    $imagePath = $fileUploader->getUploadedFileURL();
 
     $product = new Product();
     $product->setName($name);
     $product->setDescription($description);
     $product->setPrice($price);
     $product->setQuantity($quantity);
-    $product->setImage($imagePath);
+    if(isset($_FILES['image'])){
+        $fileUploader = new FileUploader();
+        $fileUploader->upload('image');
+        $imagePath = $fileUploader->getUploadedFileURL();
+        $product->setImage($imagePath);
+    }
     $product->save();
     respondWithSuccess($product);
 }catch(Exception $e){

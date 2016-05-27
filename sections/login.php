@@ -20,7 +20,7 @@
     <form action="" name="form" method="POST">
         <input type="text" name="username" id="username" placeholder="Nombre de usuario"><br>
         <input type="password" name="password" id="password" placeholder="Contrase&ntilde;a"><br>
-        <input type="button" value="Iniciar" class="button" name="btnLogin">
+        <input type="button" value="Iniciar" class="button" id="btnLogin">
     </form>
   </div>
 </div>

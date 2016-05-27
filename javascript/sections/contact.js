@@ -51,9 +51,11 @@ function sendMessage() {
 function onSendSuccess(response){
     notifier.setTheme(MODAL_GREEN);
     notifier.alert(
-        '¡Espera un momento!',
+        'Gracias por tu opinion',
         "El correo ha sido enviado",
-        function(){}
+        function(){
+            redirectTo('principal.php');
+        }
     );
 }
 
