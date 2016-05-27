@@ -14,7 +14,7 @@
     <![endif]-->
     <style>
         body{
-            /*background: lightgrey url('../resources/images/background/space.png') repeat;*/
+            background: black;
         }
     </style>
 </head>
