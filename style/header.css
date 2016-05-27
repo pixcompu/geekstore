@@ -28,10 +28,15 @@ body{
     overflow: hidden;
     background: yellow;
 }
-#navbar li{
+#navbar-options li{
     float: left;
     text-align: center;
 }
+#session-options li{
+    float: right;
+    text-align: center;
+}
+
 #brand{
     text-align: left;
     color: white;
@@ -49,6 +54,7 @@ body{
 }
 #session li{
     text-align: center;
+    margin-bottom: 5%;
 }
 #session p{
     height: 100%;
@@ -76,19 +82,19 @@ a.navbar-item:hover{
     color: yellow;
 }
 a.login-item{
-    background: lawngreen;
+    background:yellow;
+    color: midnightblue;
 }
 a.login-item:hover{
     background: black url('../resources/images/background/buttonBakcground.gif');
-    color: lawngreen;
+    color: yellow;
 }
 a.logout-item{
     background: red;
     color: white;
 }
 a.logout-item:hover{
-    background: black url('../resources/images/background/buttonBakcground.gif');
-    color: red;
+  
 }
 
 @media screen and (max-width: 760px) {

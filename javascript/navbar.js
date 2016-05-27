@@ -2,18 +2,17 @@ initSessionConfig();
 
 function initSessionConfig() {
     if (cookieManager.check('user')) {
-        var sessionPanel = findViewById('session-options');
-        clearElement(sessionPanel);
-
+        var sessionOptions = findViewById('session-options');
+        clearElement(sessionOptions);
         var user = JSON.parse(cookieManager.getValue('user'));
         var link = newHyperLink('Cerrar Sesión', '');
         link.onclick = showLogoutDialog;
         addClassTo(link, 'logout-item');
-        appendItemsTo(sessionPanel,
+        appendItemsTo(sessionOptions,
             [
-                newLi(newParagraph('Bienvenido: ' + user['username'])),
-                newLi(link)
+                newLi(link),
             ]);
+
 
         if (cookieManager.check('user')) {
             addProfileOption();
