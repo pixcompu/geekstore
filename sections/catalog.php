@@ -5,9 +5,11 @@
     $sectionTitle = "GeekStore - Catálogo";
     require_once('header.php');
     ?>
+    <link rel="stylesheet" href="../style/catalog.css">
     <style>
         a[href='catalog.php']{
-            background-color: white;
+            color: white;
+            background-color: black;
         }
     </style>
 </head>
@@ -26,6 +28,19 @@
         );
     }
 
+    function onFetchSuccess(response){
+        if( response.status == 'success') {
+            var data = response.data;
+            showCatalog( data );
+        }else{
+            onFetchFailure(response.description);
+        }
+    }
+
+    function onFetchFailure(error){
+        appendLog('FETCH-CATALOG', error);
+    }
+
     function showCatalog(data) {
         var catalog = document.getElementById('catalog');
         catalog.style.display = 'inline-block';
@@ -38,69 +53,26 @@
 
     function getCard( product ){
         var card = newDiv();
-        card.style.textAlign = 'center';
-        card.style.width = '20%';
-        card.style.borderRadius = '5px';
-        card.style.margin = '10px';
-        card.style.padding = '10px';
-        card.style.border = 'solid';
-        card.style.float = 'left';
+        addClassTo(card, 'card');
+        addClassTo(card, 'shadow-depth-light');
 
         var image = newImg(product['image']);
-        image.style.width = '80%';
+        addClassTo(image, 'border-tlr-radius');
+        addClassTo(image, 'card-image');
 
         var title = newH4(product['name']);
-        var price = newParagraph('Precio : $' + product['price']);
-
-        var buttonCart = newButton('Agregar a mi carrito', addItem);
+        var price = newParagraph('$' + product['price']);
+        var buttonCart = newButton('Agregar al carrito', addItem);
+        addClassTo(buttonCart, 'action-button')
         buttonCart.setAttribute( 'data-item', JSON.stringify(product) );
 
-        var buttonDetails = newButton('Ver Detalles', showDetails);
+        var buttonDetails = newButton('Detalles', showDetails);
+        addClassTo(buttonDetails, 'action-button')
         buttonDetails.setAttribute('data-item', JSON.stringify(product));
 
-        appendItemsTo( card,
-                [image, title, price, buttonCart, buttonDetails] );
-
+        appendItemsTo( card, [image, title, price, buttonCart, buttonDetails] );
         return card;
     }
-
-    function showDetails(){
-        var product = JSON.parse(this.getAttribute('data-item'));
-        var detailsPanel = newDiv();
-        var image = newImg(product['image']);
-        var title = newH2(product['name']);
-        var description = newParagraph(product['description']);
-        var price = newParagraph('Precio : $' + product['price']);
-        var existance = newParagraph('En existencia : ' + product['quantity']);
-        var buttonCart = newButton('Agregar a mi carrito', null);
-        buttonCart.setAttribute( 'data-item', JSON.stringify(product) );
-        buttonCart.onclick = addItem;
-
-        detailsPanel.style.overflow = 'hidden';
-        image.style.width = '40%';
-        image.style.float = 'left';
-
-        appendItemsTo(detailsPanel,
-                [image, title, description, price, existance, buttonCart]
-        );
-
-        notifier.expectsHTMLContent();
-        notifier.setTheme( MODAL_YELLOW );
-        notifier.alert(
-                'Detalles del producto',
-                detailsPanel.outerHTML
-        );
-    }
-
-    function onFetchSuccess(response){
-        if( response.status == 'success') {
-            var data = response.data;
-            showCatalog( data );
-        }else{
-            onFetchFailure(response.description);
-        }
-    }
-
 
     function addItem(){
         var jsonItem = this.getAttribute('data-item');
@@ -116,8 +88,29 @@
         redirectTo('cart.php');
     }
 
-    function onFetchFailure(error){
-        appendLog('FETCH', error);
+    function showDetails(){
+        var product = JSON.parse(this.getAttribute('data-item'));
+        var detailsPanel = newDiv();
+        var image = newImg(product['image']);
+        var title = newH2(product['name']);
+        var description = newParagraph(product['description']);
+        var price = newParagraph('Precio : $' + product['price']);
+        var existance = newParagraph('En existencia : ' + product['quantity']);
+        var buttonCart = newButton('Agregar a mi carrito', null);
+        buttonCart.setAttribute( 'data-item', JSON.stringify(product) );
+        buttonCart.onclick = addItem;
+
+        addClassTo(detailsPanel, 'details-panel');
+        addClassTo(image, 'details-panel-image');
+
+        appendItemsTo(
+            detailsPanel,
+            [image, title, description, price, existance, buttonCart]
+        );
+
+        notifier.expectsHTMLContent();
+        notifier.setTheme( MODAL_YELLOW );
+        notifier.alert( 'Detalles del producto', detailsPanel.outerHTML );
     }
 </script>
 </body>
