@@ -96,6 +96,9 @@ require_once('scripts.php');
         );
     }
     function onRegisterError(error){
+        notifier.dontExpectsHTMLContent();
+        notifier.setTheme( MODAL_RED );
+        notifier.alert('Error de Registro',error);
         appendLog('REGISTER', error);
     }
 </script>
