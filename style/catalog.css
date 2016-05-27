@@ -1,0 +1,117 @@
+@font-face {
+    font-family: game;
+    src: url('../resources/fonts/game/PressStart2P-Regular.ttf');
+}
+body {
+    font-family: game, serif;
+    background: black;
+}
+
+#catalog {
+    width: 100%;
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#addToCart {
+
+}
+
+#viewDetails {
+    src: url('../resources/images/icons/eye.png');
+}
+
+.shadow-depth-light {
+   box-shadow: 0 1px 3px rgba(255,255,255, 0.12), 0 1px 2px rgba(255,255,255,0.24);
+}
+
+.border-tlr-radius {
+    border-top-left-radius: 2px;
+	  border-top-right-radius: 2px;
+}
+
+.card {
+    text-align: center;
+    width: 20%;
+    border-radius: 5px;
+    margin: 10px;
+    float: left;
+    display: inline-block;
+    background-color: #FFF;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    -webkit-transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    -webkit-transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.card:hover{
+    -webkit-transform: scale(1.05, 1.05);
+    transform: scale(1.05, 1.05);
+}
+
+.card:hover::after {
+    opacity: 1;
+}
+
+.card-image {
+    width: 100%;
+    min-height: 100px;
+    margin: 0 auto;
+}
+
+.card-image img {
+    width: 100%;
+		max-width: 100%;
+		display: block;
+}
+
+.card-content {
+    position: relative;
+}
+
+.action-button {
+    display: inline-block;
+    border-top: 1.5px solid midnightblue;
+    border-bottom: none;
+    border-right: none;
+    border-left: none;
+    width: 50%;
+    height: 2.5rem;
+    background: none;
+    color: black;
+}
+
+.action-button:hover {
+    background: yellow;
+    color: white;
+}
+
+.button-image {
+    width: 35%;
+    height: 60%;
+}
+
+.details-panel {
+    overflow: hidden;
+}
+
+.details-panel-image {
+    width: 40%;
+    float: left;
+}
