@@ -217,7 +217,26 @@ class Product extends Model{
         parent::save();
         $this->id = $this->executor->getLastAutoincrementId();
     }
-    
+
+    public function findAll($textToSearch, $startPage = 0, $limit = 100){
+        $products = parent::all($startPage, $limit);
+        $transformedProducts = array();
+        foreach( $products as $product) {
+            if ((strpos($product['name'], $textToSearch) !== false) ||
+                 (strpos($product['description'], $textToSearch) !== false) ) {
+                $relativePath = $product['image'];
+                $product['image'] = 'http://' .  $_SERVER['SERVER_NAME'] . "/" ;
+                if( strcmp( $_SERVER['SERVER_NAME'], 'localhost') == 0){
+                    $product['image'] .= PROJECT_FOLDER_NAME . "/";
+                }
+                $product['image'] .= $relativePath;
+
+                $transformedProducts[] = $product;
+            }
+        }
+        return $transformedProducts;
+    }
+
     public function all($startPage = 0, $limit = 100){
         $products = parent::all($startPage, $limit);
         $transformedProducts = array();
@@ -328,7 +347,7 @@ class Product extends Model{
     {
         $this->quantity = $quantity;
     }
-    
+
 }
 class User extends Model{
     protected $username;
@@ -442,7 +461,7 @@ class SaleItem extends Model{
         parent::save();
         $this->id = $this->executor->getLastAutoincrementId();
     }
-    
+
     /**
      * @return mixed
      */
