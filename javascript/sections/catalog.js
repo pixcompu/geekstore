@@ -95,10 +95,6 @@
      var description = newParagraph(product['description']);
      var price = newParagraph('Precio : $' + product['price']);
      var existance = newParagraph('En existencia : ' + product['quantity']);
-    // var buttonCart = newButton('Agregar a mi carrito', null);
-    // buttonCart.setAttribute( 'data-item', JSON.stringify(product) );
-    // buttonCart.onclick = addItem;
-
      addClassTo(price, 'details-price');
      addClassTo(detailsPanel, 'details-panel');
      addClassTo(image, 'details-panel-image');
