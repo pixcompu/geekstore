@@ -5,6 +5,7 @@ $username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 $phone = $_POST['phone'];
+$type = $_POST['type'];
 
 $user = new User();
 $user->setUsername($username);
