@@ -26,13 +26,6 @@
 <?php require_once('scripts.php'); ?>
 
 <script src="../javascript/userSession.js"></script>
-<script>
-    window.onload = function(){
-        var user = JSON.parse(cookieManager.getValue('user'));
-        appendText(findViewById('username'), user['username']);
-        appendText(findViewById('email'), user['email']);
-        appendText(findViewById('phone'), user['phone']);
-    }
-</script>
+<script src="../javascript/sections/profile.js"></script>
 </body>
 </html>
