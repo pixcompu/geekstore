@@ -62,12 +62,21 @@
 
         var title = newH4(product['name']);
         var price = newParagraph('$' + product['price']);
-        var buttonCart = newButton('Agregar al carrito', addItem);
+
+        var addImage = newImg('../resources/images/icons/cart-plus.png');
+        addClassTo(addImage, 'button-image');
+        var buttonCart = newButton('', addItem);
+        buttonCart.appendChild(addImage);
         addClassTo(buttonCart, 'action-button')
+        buttonCart.setAttribute( 'id' , 'addToCart' );
         buttonCart.setAttribute( 'data-item', JSON.stringify(product) );
 
-        var buttonDetails = newButton('Detalles', showDetails);
+        var detailImage = newImg('../resources/images/icons/eye.png');
+        addClassTo(detailImage, 'button-image');
+        var buttonDetails = newButton('', showDetails);
+        buttonDetails.appendChild(detailImage);
         addClassTo(buttonDetails, 'action-button')
+        buttonDetails.setAttribute( 'id' , 'viewDetails' );
         buttonDetails.setAttribute('data-item', JSON.stringify(product));
 
         appendItemsTo( card, [image, title, price, buttonCart, buttonDetails] );

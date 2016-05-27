@@ -14,6 +14,14 @@ body {
     margin-right: 5%;
 }
 
+#addToCart {
+
+}
+
+#viewDetails {
+    src: url('../resources/images/icons/eye.png');
+}
+
 .shadow-depth-light {
    box-shadow: 0 1px 3px rgba(255,255,255, 0.12), 0 1px 2px rgba(255,255,255,0.24);
 }
@@ -64,6 +72,7 @@ body {
 .card-image {
     width: 100%;
     min-height: 100px;
+    margin: 0 auto;
 }
 
 .card-image img {
@@ -89,8 +98,13 @@ body {
 }
 
 .action-button:hover {
-    background: blue;
+    background: yellow;
     color: white;
+}
+
+.button-image {
+    width: 35%;
+    height: 60%;
 }
 
 .details-panel {
