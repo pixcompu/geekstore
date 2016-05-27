@@ -7,19 +7,34 @@ body {
     background: black;
 }
 
-#catalog {
+input {
+    font-family: game, serif;
+}
+
+#catalog, .box-container {
     width: 100%;
     margin-top: 2%;
     margin-left: 5%;
     margin-right: 5%;
 }
 
-#addToCart {
-
+.box-container input[type=text] {
+    background-color: white;
+    background-image: url('../resources/images/icons/searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    -webkit-transition: width 0.3s ease-in-out;
+    transition: width 0.3s ease-in-out;
+    width: 20%;
+    padding: 14px 40px;
+    margin: 10px;
+    box-sizing: border-box;
+    transform:scale(1,1.2); /* W3C */
+    -webkit-transform:scale(1,1.2); /* Safari and Chrome */
 }
 
-#viewDetails {
-    src: url('../resources/images/icons/eye.png');
+.box-container input[type=text]:focus {
+    width: 85%;
 }
 
 .shadow-depth-light {
