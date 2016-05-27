@@ -6,31 +6,7 @@
     require_once('header.php');
     ?>
     <script src="../javascript/userSession.js"></script>
-    <style>
-        body{
-            background: black;
-        }
-        #profile-panel{
-            color: white;
-            text-align: center;
-        }
-        #image, #attributes{
-            float: left;
-            width: 50%;
-            border: 0;
-            margin: 0;
-        }
-        #attributes{
-            padding-top: 10%;
-        }
-        #profile-panel img{
-            width: 300px;
-            height: 400px;
-        }
-        a[href='profile.php']{
-            background-color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="../style/profile.css">
 </head>
 <body>
 
