@@ -203,7 +203,7 @@
         var params = {};
         params['id'] = id;
         ajax.post(
-                '../server/proccess_delete_product.php',
+                '../server/action/product/delete.php',
                 params,
                 onDeleteSuccess,
                 onDeleteFailure

@@ -338,6 +338,15 @@ class User extends Model{
     protected $phone;
     protected $tableID = ['username'];
 
+    public function all($startPage = 0, $limit = 100){
+        $users = parent::all($startPage, $limit);
+        $transformedUsers = array();
+        foreach( $users as $user ){
+            $transformedUsers[] = $user;
+        }
+        return $transformedUsers;
+    }
+
     /**
      * @return mixed
      */
