@@ -7,6 +7,12 @@
     ?>
     <script src="../javascript/userSession.js"></script>
     <link rel="stylesheet" href="../style/profile.css">
+    <style>
+        a[href='profile.php']{
+            color: white;
+            background-color: black;
+        }
+    </style>
 </head>
 <body>
 

@@ -6,6 +6,12 @@
     require_once('header.php');
     ?>
     <link rel="stylesheet" href="../style/cart.css">
+    <style>
+        a[href='cart.php']{
+            color: white;
+            background-color: black;
+        }
+    </style>
 </head>
 <body>
 <?php require_once('navbar.php'); ?>

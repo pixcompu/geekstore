@@ -12,7 +12,8 @@
             background-color: black;
         }
         a[href='manage_user.php']{
-            background-color: white;
+            color: white;
+            background-color: black;
         }
         #users tr:hover{
             cursor: pointer;
@@ -158,7 +159,7 @@ require_once('scripts.php');
         formData.append('phone', findViewById('phone').value);
         return formData;
     }
-    
+
     function showDeleteDialog(){
         event.stopPropagation();
         var id = this.getAttribute('data-id');

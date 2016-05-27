@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="../style/floating_button.css">
     <style>
         a[href='manage_product.php']{
-            background-color: white;
+            color: white;
+            background-color: black;
         }
         body{
             background-color: black;
@@ -130,15 +131,38 @@ require_once('scripts.php');
         return formData;
     }
 
+    function validateFormData(){
+        if( findViewById('name').value.length > 0 ) {
+            if( findViewById('description').value.length > 0 ) {
+                if( findViewById('price').value.length > 0 ) {
+                    if( findViewById('quantity').value.length > 0) {
+                        return true;
+                    }else{
+                        alert('La cantidad debe ser mayor a cero');
+                    }
+                }else{
+                    alert('El precio debe ser mayor a cero');
+                }
+            }else{
+                alert('La descripciòn no debe ser vacia');
+            }
+        }else{
+            alert('El campo de nombre no puede ser vacio');
+        }
+        return false;
+    }
+
     function register(){
-        var formData = getProductFormData();
-        ajax.postWithProgress(
-            '../server/action/product/new.php',
-            formData,
-            onRegisterSuccess,
-            onRegisterFailure,
-            onRegisterProgress
-        );
+        if ( validateFormData() ) {
+            var formData = getProductFormData();
+            ajax.postWithProgress(
+                    '../server/action/product/new.php',
+                    formData,
+                    onRegisterSuccess,
+                    onRegisterFailure,
+                    onRegisterProgress
+            );
+        }
     }
 
     function onRegisterSuccess( data ){
@@ -191,15 +215,16 @@ require_once('scripts.php');
     }
 
     function updateProduct( id ) {
-        var formData = getProductFormData( id );
-        ajax.postWithProgress(
-            '../server/action/product/update.php',
-            formData,
-            onUpdateSuccess,
-            onUpdateFailure,
-            onUpdateProgress
-        );
-
+        if ( validateFormData() ) {
+          var formData = getProductFormData( id );
+          ajax.postWithProgress(
+                  '../server/action/product/update.php',
+                  formData,
+                  onUpdateSuccess,
+                  onUpdateFailure,
+                  onUpdateProgress
+          );
+        }
     }
 
     function onUpdateProgress( total, current) {

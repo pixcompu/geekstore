@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="../style/star_wars_effect.css">
     <link rel="stylesheet" href="../style/contact.css">
     <link rel="stylesheet" href="../style/forms.css">
+    <style>
+        a[href='contact.php']{
+            color: white;
+            background-color: black;
+        }
+    </style>
 </head>
 <body>
 <?php require_once('navbar.php'); ?>
