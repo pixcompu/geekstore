@@ -132,15 +132,38 @@
         return formData;
     }
 
+    function validateFormData(){
+        if( findViewById('name').value.length > 0 ) {
+            if( findViewById('description').value.length > 0 ) {
+                if( findViewById('price').value.length > 0 ) {
+                    if( findViewById('quantity').value.length > 0) {
+                        return true;
+                    }else{
+                        alert('La cantidad debe ser mayor a cero');
+                    }
+                }else{
+                    alert('El precio debe ser mayor a cero');
+                }
+            }else{
+                alert('La descripciòn no debe ser vacia');
+            }
+        }else{
+            alert('El campo de nombre no puede ser vacio');
+        }
+        return false;
+    }
+
     function register(){
-        var formData = getProductFormData();
-        ajax.postWithProgress(
-                '../server/action/product/new.php',
-                formData,
-                onRegisterSuccess,
-                onRegisterFailure,
-                onRegisterProgress
-        );
+        if ( validateFormData() ) {
+            var formData = getProductFormData();
+            ajax.postWithProgress(
+                    '../server/action/product/new.php',
+                    formData,
+                    onRegisterSuccess,
+                    onRegisterFailure,
+                    onRegisterProgress
+            );
+        }
     }
 
     function onRegisterSuccess( data ){
