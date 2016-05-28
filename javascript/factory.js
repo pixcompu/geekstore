@@ -1,6 +1,6 @@
 /**
  * General DOM manipulation Wrapper By PIXCOMPU.
- * 
+ *
  * This functions save precious time when the page is creating DOM elements dinamically.
  * Comparation:
  * ----------------------------CREATE A <BUTTON> AND APPEND IT TO THE DOM WITHOUT FACTORY -----------------------------
@@ -13,6 +13,18 @@
  * <script src="factory.js"></script>
  * findViewById('my_wrapper').appendChild( newButton('I am a button', function(){ console.log('print something')} ) );
  */
+objectIsEmpty = function(object){
+    for(var property in object) {
+        if(object.hasOwnProperty(property))
+            return false;
+    }
+    return true;
+};
+
+emailIsValid = function(email){
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+};
 
 addClassTo = function(element, className){
     var classes = className.split(' ');
@@ -106,7 +118,7 @@ newElement = function(tag, item){
 };
 
 removeElement = function(item){
-  item.parentNode.removeChild(item);
+    item.parentNode.removeChild(item);
 };
 
 newButton = function(item, callback){
