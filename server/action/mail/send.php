@@ -1,11 +1,19 @@
 <?php
+
 require("sendgrid-php/sendgrid-php.php");
 require_once('../../autoloader.php');
 
-$destinatary = $_POST['destinatary'];
-$message = $_POST['message'];
-
 try{
+    validateFields(
+        array(
+            'destinatary' => 'Proporciona un destinatario',
+            'message' => 'Proporciona un mensaje'
+        )
+    );
+
+    $destinatary = $_POST['destinatary'];
+    $message = $_POST['message'];
+
     $sendgrid = new SendGrid('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');
     $email = new SendGrid\Email();
     $email
@@ -16,11 +24,16 @@ try{
         ->setFrom('geekstore@pixcompu.esy.es')
         ->setSubject('Nuevo Contacto de ' . $destinatary)
         ->setText($message)
-        ->setHtml('<strong>'.$message.'</strong>');
+        ->setHtml('<p>'.$message.'</p>');
     $sendgrid->send($email);
     respondWithSuccess('Email enviado');
+
 }catch(Exception $e){
-    respondWithError('No se pudo enviar tu mensaje, aún puedes mantanarte en contacto con nosotros a través de ventas@geektore.com');
+    if( $e->getCode() == FIELD_NOT_FOUND){
+        respondWithError($e->getMessage());
+    }else{
+        respondWithError('No se pudo enviar tu mensaje, aún puedes mantanarte en contacto con nosotros a través de ventas@geektore.com');
+    }
 }
 
 

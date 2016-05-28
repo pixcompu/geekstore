@@ -223,8 +223,8 @@ class Product extends Model{
         $products = parent::all($startPage, $limit);
         $transformedProducts = array();
         foreach( $products as $product) {
-            if ((strpos($product['name'], $textToSearch) !== false) ||
-                 (strpos($product['description'], $textToSearch) !== false) ) {
+            if ((strpos(strtolower($product['name']), strtolower($textToSearch)) !== false) ||
+                 (strpos(strtolower($product['description']), strtolower($textToSearch)) !== false) ) {
                 $relativePath = $product['image'];
                 $product['image'] = 'http://' .  $_SERVER['SERVER_NAME'] . "/" ;
                 if( strcmp( $_SERVER['SERVER_NAME'], 'localhost') == 0){

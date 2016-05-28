@@ -15,8 +15,27 @@ function respondWithError($message){
 
 function validateFields($fields){
     foreach ($fields as $field => $message){
-        if( !isset($_POST[$field]) ){
+        if( !isset($_POST[$field]) || strlen($_POST[$field]) == 0){
             throw new SystemException(FIELD_NOT_FOUND, $message);
+        }
+    }
+}
+function validateImage($field, $message){
+    if(!isset($_FILES[$field])){
+        throw new SystemException(FIELD_NOT_FOUND, $message);
+    }
+}
+function validateIntegers($fields){
+    foreach ($fields as $field => $message){
+        if( !is_integer($_POST[$field]) ){
+            throw new SystemException(FIELD_NOT_VALID, $message);
+        }
+    }
+}
+function validateDecimals($fields){
+    foreach ($fields as $field => $message){
+        if( !is_numeric($_POST[$field]) ){
+            throw new SystemException(FIELD_NOT_VALID, $message);
         }
     }
 }

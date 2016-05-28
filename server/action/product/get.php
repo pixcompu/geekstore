@@ -1,19 +1,17 @@
 <?php
+
 require_once('../../autoloader.php');
 
-$product = new Product();
-if (isset($_POST["search"]) && !empty($_POST["search"])) {
-    try{
+try{
+    $product = new Product();
+
+    if (isset($_POST["search"]) && !empty($_POST["search"])) {
         $products = $product->findAll($_POST["search"]);
-        respondWithSuccess($products);
-    }catch(Exception $e){
-        respondWithError($e->getMessage());
-    }
-} else {
-    try{
+    } else {
         $products = $product->all();
-        respondWithSuccess($products);
-    }catch(Exception $e){
-        respondWithError($e->getMessage());
     }
+
+    respondWithSuccess($products);
+}catch(Exception $e){
+    respondWithError('Revisa tu conexion a internet para visualizar los productos');
 }

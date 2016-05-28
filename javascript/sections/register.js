@@ -69,6 +69,8 @@ function onRegisterSuccess(json){
 function onRegisterError(error){
     notifier.dontExpectsHTMLContent();
     notifier.setTheme( MODAL_RED );
-    notifier.alert('Error de Registro',error);
+    notifier.alert(
+        'Error de Registro',
+        error);
     appendLog('REGISTER', error);
 }
