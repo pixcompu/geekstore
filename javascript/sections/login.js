@@ -23,7 +23,7 @@ function validateFields(){
     var form = document.form;
     if( form.username.value.length == 0 ){
         notifier.alert(
-            'No se pudo inicar tu sesión',
+            'No se pudo iniciar tu sesión',
             'Proporciona un usuario'
         );
         return false;

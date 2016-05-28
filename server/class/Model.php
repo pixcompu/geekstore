@@ -13,6 +13,7 @@ abstract class Model{
         }
         $this->fields = $this->getFields();
         $this->executor = Executor::getInstance();
+        if(!$this->executor->isConnected()) throw new SystemException(SQL_ERROR, 'Revisa tu conexion a intasdasernet');
     }
 
     protected function getFields(){
