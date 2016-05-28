@@ -73,18 +73,37 @@
  }
 
  function addItem(){
-     var jsonItem = this.getAttribute('data-item');
+
+     var itemSelected = JSON.parse(this.getAttribute('data-item'));
+     var selectedID = itemSelected['id'];
      if( !cookieManager.check('cart')){
          cookieManager.create('cart', JSON.stringify({}), 60 )
      }
-     var items = JSON.parse(cookieManager.getValue('cart'));
-     var item = JSON.parse(jsonItem);
-     item['cart_quantity'] = 1;
-     item['subtotal'] = item['cart_quantity'] * item['price'];
-     items[item['id']] = item;
-     cookieManager.setValue('cart', JSON.stringify(items));
+     var cartItems = JSON.parse(cookieManager.getValue('cart'));
+
+     var isInCart = false;
+     for ( var id in cartItems ) {
+         if( cartItems.hasOwnProperty(id) ){
+             if(id == itemSelected['id']){
+                isInCart = true;
+                 break;
+             }
+         }
+     }
+
+     if( isInCart ){
+         var cartItem = cartItems[selectedID];
+         itemSelected['cart_quantity'] = cartItem['cart_quantity'] + 1;
+         itemSelected['subtotal'] = parseFloat(cartItem['subtotal']) + parseFloat(itemSelected['price']);
+     }else{
+         itemSelected['cart_quantity'] = 1;
+         itemSelected['subtotal'] = itemSelected['price'];
+     }
+     cartItems[selectedID] = itemSelected;
+     cookieManager.setValue('cart', JSON.stringify(cartItems));
      redirectTo('cart.php');
  }
+
 
  function showDetails(){
      var product = JSON.parse(this.getAttribute('data-item'));
