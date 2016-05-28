@@ -1,5 +1,6 @@
 #header{
-    background-color: midnightblue;
+    background: midnightblue url('../resources/images/background/citybackground.png') repeat-x;
+    background-size: contain;
 }
 #header ul{
     list-style: none;
@@ -32,13 +33,11 @@
 }
 
 #brand{
-    text-align: left;
+    text-align: right;
     color: white;
     width: 70%;
 }
-#brand p, #brand img{
-    margin: 5px;
-}
+
 #brand, #session{
     display: block;
     float: left;
@@ -61,11 +60,13 @@
 #brand img{
     width: 10%;
     float: left;
+    margin-right: 10px;
 }
 #brand p{
-    text-align: center;
-    margin-top: 5%;
+    text-align: left;
+    margin-top: 3%;
     font-size: 2em;
+    margin-bottom: 5%;
 }
 
 a.navbar-item{
