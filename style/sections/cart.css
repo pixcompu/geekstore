@@ -1,3 +1,7 @@
+a[href='cart.php']{
+    color: white;
+    background-color: black;
+}
 #modal_window_body table{
     border: none;
     margin-top: 2%;
@@ -16,7 +20,7 @@
     padding: 1%;
 }
 a[href='cart.php']{
-    background-color: white;
+    background-color: black;
 }
 body, #cart{
     text-align: center;
@@ -39,6 +43,10 @@ h1{
     width: inherit;
     padding: 1%;
     margin-top: 2%;
+}
+#btn_shop{
+    background-color: midnightblue;
+    color: white;
 }
 #start_shopping:hover{
     background-color: lightgreen;
@@ -95,7 +103,11 @@ h1{
 }
 #cart table select{
     width: 80%;
+    padding-top: 5px;
+    padding-bottom: 5px;
     background-color: lightgreen;
+    text-align: center;
+    font-family: game, sans-serif;
 }
 #cart tr td{
     text-align: center;

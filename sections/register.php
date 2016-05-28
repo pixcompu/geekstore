@@ -3,18 +3,15 @@
 <head>
     <?php
     $sectionTitle = "GeekStore - Registro";
-    require_once('header.php');
+    require_once('parts/header.php');
     ?>
     <link rel="stylesheet" href="../style/forms.css">
-    <style>
-        a[href='register.php']{
-            background-color: black;
-            color : white;
-        }
-    </style>
+    <link rel="stylesheet" href="../style/sections/register.css">
 </head>
 <body>
-<?php require_once('navbar.php'); ?>
+
+<?php require_once('parts/navbar.php'); ?>
+
 <div class="container">
     <div class="form">
         <h1>Ingresa tu información</h1>
@@ -27,9 +24,9 @@
         </form>
     </div>
 </div>
-<?php
-require_once('scripts.php');
-?>
+
+<?php require_once('parts/scripts.php'); ?>
+
 <script src="../javascript/sections/register.js"></script>
 </body>
 </html>

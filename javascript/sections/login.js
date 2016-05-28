@@ -19,17 +19,24 @@ function login() {
 }
 
 function validateFields(){
+    notifier.setTheme( MODAL_RED );
     var form = document.form;
-    if( form.username.value.length > 0 ){
-        if( form.password.value.length > 0 ){
-            return true;
-        }else{
-            alert('La contraseña no debe ser vacia');
-        }
-    }else{
-        alert('El campo usuario no puede ser vacio');
+    if( form.username.value.length == 0 ){
+        notifier.alert(
+            'No se pudo inicar tu sesión',
+            'Proporciona un usuario'
+        );
+        return false;
     }
-    return false;
+    if( form.password.value.length == 0 ){
+        notifier.alert(
+            'No se pudo inicar tu sesión',
+            'Proporciona una constraseña'
+        );
+        return false;
+    }
+
+    return true;
 }
 
 function init(){

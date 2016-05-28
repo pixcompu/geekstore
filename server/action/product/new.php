@@ -8,7 +8,6 @@
 require_once('../../autoloader.php');
 
 try{
-
     $name = $_POST['name'];
     $description = $_POST['description'];
     $price = $_POST['price'];
