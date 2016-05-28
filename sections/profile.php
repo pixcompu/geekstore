@@ -3,20 +3,14 @@
 <head>
     <?php
     $sectionTitle = "GeekStore - Mi Perfil";
-    require_once('header.php');
+    require_once('parts/header.php');
     ?>
     <script src="../javascript/userSession.js"></script>
-    <link rel="stylesheet" href="../style/profile.css">
-    <style>
-        a[href='profile.php']{
-            color: white;
-            background-color: black;
-        }
-    </style>
+    <link rel="stylesheet" href="../style/sections/profile.css">
 </head>
 <body>
 
-<?php require_once('navbar.php')?>
+<?php require_once('parts/navbar.php') ?>
 
 <div id="profile-panel">
     <div id="image">
@@ -29,7 +23,7 @@
     </div>
 </div>
 
-<?php require_once('scripts.php'); ?>
+<?php require_once('parts/scripts.php'); ?>
 
 <script src="../javascript/userSession.js"></script>
 <script src="../javascript/sections/profile.js"></script>

@@ -3,10 +3,10 @@
 <head>
     <?php
     $sectionTitle = "GeekStore - Contacto";
-    require_once('header.php');
+    require_once('parts/header.php');
     ?>
     <link rel="stylesheet" href="../style/star_wars_effect.css">
-    <link rel="stylesheet" href="../style/contact.css">
+    <link rel="stylesheet" href="../style/sections/contact.css">
     <link rel="stylesheet" href="../style/forms.css">
     <style>
         a[href='contact.php']{
@@ -16,7 +16,7 @@
     </style>
 </head>
 <body>
-<?php require_once('navbar.php'); ?>
+<?php require_once('parts/navbar.php'); ?>
 <img src="../resources/images/icons/pacman.gif" id="pacman" alt="">
 <div id="container">
     <div id="form-map">
@@ -33,7 +33,7 @@
     </div>
 </div>
 <?php
-require_once('scripts.php');
+require_once('parts/scripts.php');
 ?>
 <script type="text/javascript">
     var map;

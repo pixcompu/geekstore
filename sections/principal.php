@@ -3,7 +3,7 @@
 <head>
     <?php
     $sectionTitle = "GeekStore - Inicio";
-    require_once('header.php');
+    require_once('parts/header.php');
     ?>
     <!--[if !IE]><!-->
     <link rel="stylesheet" href="../style/splash.css">
@@ -12,15 +12,10 @@
     <!--[if IE]>
     <link rel="stylesheet" type="text/css" href="../style/ie/principal.css" />
     <![endif]-->
-    <style>
-        body{
-            background: black;
-        }
-    </style>
 </head>
 <body>
 
-<?php require_once('navbar.php'); ?>
+<?php require_once('parts/navbar.php'); ?>
 
 <div id="splash">
     <p>Cargando...</p>
@@ -52,7 +47,7 @@
     </div>
 </div>
 
-<?php require_once('scripts.php'); ?>
+<?php require_once('parts/scripts.php'); ?>
 <script src="../javascript/sections/principal.js"></script>
 </body>
 </html>

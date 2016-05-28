@@ -3,18 +3,14 @@
 <head>
     <?php
     $sectionTitle = "GeekStore - Carrito";
-    require_once('header.php');
+    require_once('parts/header.php');
     ?>
-    <link rel="stylesheet" href="../style/cart.css">
-    <style>
-        a[href='cart.php']{
-            color: white;
-            background-color: black;
-        }
-    </style>
+    <link rel="stylesheet" href="../style/sections/cart.css">
 </head>
 <body>
-<?php require_once('navbar.php'); ?>
+
+<?php require_once('parts/navbar.php'); ?>
+
 <div id="cart">
     <h1>&iexcl;Tu carrito está vacio!</h1><br>
     <img id="game_over" src="../resources/images/icons/game_over.png" alt="game_over"><br>
@@ -25,7 +21,9 @@
     <button id="btn_drop_cart"><img src="../resources/images/icons/trash_can.png" alt="Trash"> Vaciar Carrito</button>
     <button id="btn_shop"><img src="../resources/images/icons/tag.png" alt="Shop"> Seguir Comprando</button>
 </div>
-<?php require_once('scripts.php'); ?>
+
+<?php require_once('parts/scripts.php'); ?>
+
 <script src="../javascript/sections/cart.js"></script>
 </body>
 </html>
