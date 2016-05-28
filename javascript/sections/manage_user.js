@@ -1,6 +1,8 @@
 
 window.onload = init;
 
+var cachedValues = {};
+
 function init(){
     ajax.expectJsonProperties(['status']);
     ajax.get(
@@ -152,6 +154,15 @@ function showRegister(){
             }
         }
     );
+
+    var cacheHasContent = !objectIsEmpty(cachedValues);
+    if( cacheHasContent ){
+        for( var inputID in cachedValues ){
+            if( cachedValues.hasOwnProperty(inputID)){
+                findViewById(inputID).value = cachedValues[inputID];
+            }
+        }
+    }
 }
 
 function registerUser(){
@@ -165,35 +176,54 @@ function registerUser(){
             onRegisterProgress
         );
     }
-
 }
 
 function validateFormData(){
-    if( findViewById('username').value.length > 0 ) {
-        if( findViewById('email').value.length > 0 ) {
-            if( findViewById('password').value.length > 0 ) {
-                if( findViewById('type').value.length > 0) {
-                    if( findViewById('phone').value.length > 0) {
-                        return true;
-                    }else{
-                        alert('Ingresa un número telefónico');
-                    }
-                }else{
-                    alert('Ingresa el tipo de usuario');
-                }
-            }else{
-                alert('El password no puede ser vacio');
-            }
-        }else{
-            alert('El correo electrónico no debe ser vacio');
-        }
-    }else{
-        alert('El nombre de usuario no puede ser vacio');
+
+    notifier.setTheme(MODAL_RED);
+    var errorWindowTitle = '¡Espera un momento!';
+
+    if( findViewById('username').value.length == 0 ) {
+        notifier.alert( errorWindowTitle, 'Proporciona un usuario');
+        return false;
     }
-    return false;
+    cachedValues['username'] = findViewById('username').value;
+
+    if( findViewById('email').value.length == 0 ) {
+        notifier.alert( errorWindowTitle, 'Proporciona un correo electrónico');
+        return false;
+    }else if( !emailIsValid(findViewById('email').value)){
+        notifier.alert( errorWindowTitle, 'El correo proporcionado no es valido');
+        return false;
+    }
+    cachedValues['email'] = findViewById('email').value;
+
+    if( findViewById('password').value.length == 0 ) {
+        notifier.alert( errorWindowTitle, 'Proporciona una contraseña');
+        return false;
+    }
+    cachedValues['password'] = findViewById('password').value;
+
+    if( findViewById('type').value.length == 0 ) {
+        notifier.alert( errorWindowTitle, 'Proporciona un tipo de usuario');
+        return false;
+    }
+    cachedValues['type'] = findViewById('type').value;
+
+    if( findViewById('phone').value.length == 0 ) {
+        notifier.alert( errorWindowTitle, 'Proporciona un teléfono');
+        return false;
+    }else if(isNaN(findViewById('phone').value)){
+        notifier.alert( errorWindowTitle, 'El teléfono proporcionado no es valido');
+        return false;
+    }
+    cachedValues['phone'] = findViewById('phone').value;
+
+    return true;
 }
 
 function onRegisterSuccess( data ){
+    cachedValues.length = 0;
     notifier.setTheme( MODAL_GREEN );
     notifier.dontExpectsHTMLContent();
     notifier.alert(
