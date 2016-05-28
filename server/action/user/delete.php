@@ -1,17 +1,19 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: PIX
- * Date: 26/05/2016
- * Time: 02:53 PM
- */
+
 require_once('../../autoloader.php');
 
 try{
+    validateFields(array(
+        'username' => 'Selecciona un usuario'
+    ));
     $user = new User();
     $user->setUsername($_POST['username']);
     $user->delete();
     respondWithSuccess();
 }catch(Exception $e){
-    respondWithError($e->getMessage());
+    if( $e->getCode() == FIELD_NOT_FOUND){
+        respondWithError($e->getMessage());
+    }else{
+        respondWithError('Revisa tu conexión a internet');
+    }
 }

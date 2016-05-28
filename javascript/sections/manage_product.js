@@ -1,5 +1,7 @@
 window.onload = init;
 
+var cachedValues = {};
+
 function init(){
     ajax.expectJsonProperties(['status']);
     ajax.get(
@@ -15,7 +17,11 @@ function onFetchSuccess(response){
 }
 
 function onFetchFailure(error){
-    appendLog('FETCH', error);
+    notifier.setTheme(MODAL_RED);
+    notifier.alert(
+        'No se pudo mostrar los productos',
+        error
+    );
 }
 
 function getProductForm() {
@@ -113,7 +119,11 @@ function onRegisterSuccess( data ){
 }
 
 function onRegisterFailure( error ){
-    appendLog('REGISTER', error);
+    notifier.setTheme(MODAL_RED);
+    notifier.alert(
+        'No se pudo completar el registro',
+        error
+    );
 }
 
 function onRegisterProgress( total, current ){
@@ -224,5 +234,9 @@ function onDeleteSuccess(){
 }
 
 function onDeleteFailure( error ){
-    appendLog('DELETE', error);
+    notifier.setTheme(MODAL_RED);
+    notifier.alert(
+        'No se pudo elimminar el producto',
+        error
+    );
 }

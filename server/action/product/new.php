@@ -1,13 +1,26 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: PIX
- * Date: 25/04/2016
- * Time: 07:04 PM
- */
+
 require_once('../../autoloader.php');
 
 try{
+    validateFields(
+        array(
+            'name' => 'Proporciona un nombre',
+            'description' => 'Proporciona una descripcion',
+            'price' => 'Proporciona un precio',
+            'quantity' => 'Proporciona una cantidad')
+    );
+
+    validateImage('image', 'Proporciona una imagen');
+
+    validateIntegers(
+        array('quantity' => 'La cantidad debe ser un número entero')
+    );
+
+    validateDecimals(
+        array('price' => 'El precio debe ser numérico')
+    );
+
     $name = $_POST['name'];
     $description = $_POST['description'];
     $price = $_POST['price'];
@@ -18,14 +31,19 @@ try{
     $product->setDescription($description);
     $product->setPrice($price);
     $product->setQuantity($quantity);
-    if(isset($_FILES['image'])){
-        $fileUploader = new FileUploader();
-        $fileUploader->upload('image');
-        $imagePath = $fileUploader->getUploadedFileURL();
-        $product->setImage($imagePath);
-    }
+    
+    $fileUploader = new FileUploader();
+    $fileUploader->upload('image');
+    $imagePath = $fileUploader->getUploadedFileURL();
+    $product->setImage($imagePath);
+
     $product->save();
     respondWithSuccess($product);
+    
 }catch(Exception $e){
-    respondWithError($e->getMessage());
+    if( $e->getCode() == FIELD_NOT_FOUND || $e->getCode() == FIELD_NOT_VALID){
+        respondWithError($e->getMessage());
+    }else{
+        respondWithError('Revisa tu conexión a internet');
+    }
 }
