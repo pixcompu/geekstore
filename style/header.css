@@ -1,5 +1,7 @@
 #header{
     background-color: midnightblue;
+    background: url('../resources/images/background/citybackground.png') repeat-x;
+    background-size: contain;
 }
 #header ul{
     list-style: none;
