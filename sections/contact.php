@@ -6,8 +6,8 @@
     require_once('parts/header.php');
     ?>
     <link rel="stylesheet" href="../style/star_wars_effect.css">
-    <link rel="stylesheet" href="../style/sections/contact.css">
     <link rel="stylesheet" href="../style/forms.css">
+    <link rel="stylesheet" href="../style/sections/contact.css">
     <style>
         a[href='contact.php']{
             color: white;
@@ -18,20 +18,18 @@
 <body>
 <?php require_once('parts/navbar.php'); ?>
 <img src="../resources/images/icons/pacman.gif" id="pacman" alt="">
-<div id="container">
-    <div id="form-map">
-        <!--<p>Ven a visitarnos</p>-->
-        <div id="map"></div>
-    </div>
-    <div class="container">
-        <div class="form">
-            <h1>Envíanos un correo.</h1>
-            <input id="email" name="emailInput" type="email" placeholder="Correo electrónico"> <br>
-            <textarea id="message" name="messageInput" placeholder="Escribe tus comentarios y sugerencias"></textarea><br>
-            <button id="send" name="btnSend"><img src="../resources/images/icons/inky.png" alt="">Enviar</button><br>
+
+<div class="container contact-container">
+    <div class="form">
+        <h1>Comunícate con nosotros</h1>
+        <div class="contact-form ">
+            <input id="email" class="form-input" name="emailInput" type="email" placeholder="Correo electrónico">
+            <textarea id="message" class="form-textarea" name="messageInput" placeholder="Escribe tus comentarios y sugerencias"></textarea>
+            <input id="send" type="button" value="Enviar" class="geek-btn" name="btnSend" ></input>
         </div>
     </div>
 </div>
+
 <?php
 require_once('parts/scripts.php');
 ?>

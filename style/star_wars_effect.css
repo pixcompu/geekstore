@@ -26,10 +26,11 @@
 }
 
 #pacman{
+    z-index: -1;
     position: fixed;
-    -webkit-animation:pacman-eat 20s linear 0s infinite;
-    -o-animation:pacman-eat 20s linear 0s infinite;
-    animation:pacman-eat 20s linear 0s infinite;
+    -webkit-animation:pacman-eat 10s linear 0s infinite;
+    -o-animation:pacman-eat 10s linear 0s infinite;
+    animation:pacman-eat 10s linear 0s infinite;
     -webkit-transform: scale(0.4);
     -moz-transform: scale(0.4);
     -ms-transform: scale(0.4);
@@ -40,23 +41,15 @@
 }
 @keyframes pacman-eat {
     0%{
-        margin-top: 15%;
-    }
-    25%{
-        margin-left: 25%;
-        margin-top: 20%;
+        margin-top: 10%;
     }
     50%{
         margin-left: 50%;
-        margin-top: 25%;
-    }
-    75%{
-        margin-left: 75%;
-        margin-top: 20%;
+        margin-top: 10%;
     }
     100%{
-        margin-top: 15%;
         margin-left: 100%;
+        margin-top: 10%;
     }
 }
 
