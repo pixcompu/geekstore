@@ -60,6 +60,15 @@ function showRegister(){
         }
     );
     findViewById('image').setAttribute("accept", ".jpg,.png,.jpeg,.mp4");
+
+    var cacheHasContent = !objectIsEmpty(cachedValues);
+    if( cacheHasContent ){
+        for( var inputID in cachedValues ){
+            if( cachedValues.hasOwnProperty(inputID)){
+                findViewById(inputID).value = cachedValues[inputID];
+            }
+        }
+    }
 }
 
 function getProductFormData(id) {
@@ -75,24 +84,56 @@ function getProductFormData(id) {
 }
 
 function validateFormData(){
-    if( findViewById('name').value.length > 0 ) {
-        if( findViewById('description').value.length > 0 ) {
-            if( findViewById('price').value.length > 0 ) {
-                if( findViewById('quantity').value.length > 0) {
-                    return true;
-                }else{
-                    alert('La cantidad debe ser mayor a cero');
-                }
-            }else{
-                alert('El precio debe ser mayor a cero');
-            }
-        }else{
-            alert('La descripciòn no debe ser vacia');
-        }
-    }else{
-        alert('El campo de nombre no puede ser vacio');
+
+    notifier.setTheme(MODAL_RED);
+    var errorWindowTitle = '¡Espera un momento!';
+
+    if( findViewById('name').value.length == 0 ) {
+        notifier.alert( errorWindowTitle, 'Proporciona el nombre del producto');
+        return false;
     }
-    return false;
+    cachedValues['name'] = findViewById('name').value;
+
+    if( findViewById('description').value.length == 0 ) {
+        notifier.alert( errorWindowTitle, 'Proporciona la descripción del producto');
+        return false;
+    }
+    cachedValues['description'] = findViewById('description').value;
+
+    console.log(findViewById('price').value);
+    console.log( isNaN(findViewById('price').value) );
+    if( findViewById('price').value.length == 0 ) {
+        notifier.alert( errorWindowTitle, 'Proporciona el precio del producto');
+        return false;
+    }else if( !priceIsValid(findViewById('price').value) ){
+        notifier.alert( errorWindowTitle, 'El precio proporcionado no es válido');
+        return false;
+    }
+    cachedValues['price'] = findViewById('price').value;
+
+    if( findViewById('quantity').value.length == 0 ) {
+        notifier.alert( errorWindowTitle, 'Proporciona la cantidad disponible de productos');
+        return false;
+    }else if( !quantityIsValid(findViewById('quantity').value) ){
+        notifier.alert( errorWindowTitle, 'La cantidad proporcionada no es válida');
+        return false;
+    }
+    cachedValues['quantity'] = findViewById('quantity').value;
+
+    return true;
+}
+
+function priceIsValid(price){
+    return isPositiveNumber(price);
+}
+
+function quantityIsValid(price){
+    return isPositiveNumber(price);
+}
+
+function isPositiveNumber(number){
+    var pattern = /^\d+(.\d{1,5})?$/;
+    return pattern.test(number);
 }
 
 function register(){
@@ -109,6 +150,7 @@ function register(){
 }
 
 function onRegisterSuccess( data ){
+    cachedValues.length = 0;
     notifier.setTheme( MODAL_GREEN );
     notifier.dontExpectsHTMLContent();
     notifier.alert(
