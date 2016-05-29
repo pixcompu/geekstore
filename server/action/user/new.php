@@ -19,9 +19,9 @@ try{
     $user->setEmail($email);
     $user->setPhone($phone);
     $user->setPassword(md5($password));
-    
+
     if(isset($_POST['type'])){
-        $user->setType($_POST['type']);   
+        $user->setType($_POST['type']);
     }else{
         $user->setType(TYPE_USER);
     }
@@ -31,6 +31,8 @@ try{
 }catch(Exception $e){
     if( $e->getCode() == FIELD_NOT_FOUND || $e->getCode() == FIELD_NOT_VALID){
         respondWithError($e->getMessage());
+    }else if($e->getCode() == SQL_ERROR){
+        respondWithError('Ya existe un usuario con ese nombre');
     }else{
         respondWithError('Revisa tu conexión a internet');
     }

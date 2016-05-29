@@ -20,9 +20,18 @@ function validateFields() {
 
     var form = document.form;
     var windowTitle = '¡Espera un momento!';
+    notifier.setTheme(MODAL_RED);
 
     if (form.username.value.length == 0) {
         notifier.alert(windowTitle, 'Proporciona un nombre de usuario');
+        return false;
+    }
+
+    if (form.email.value.length == 0) {
+        notifier.alert(windowTitle, 'Proporciona un correo electrónico');
+        return false;
+    }else if(!emailIsValid(form.email.value)){
+        notifier.alert(windowTitle, 'El correo electrónico que proporcionaste no es válido');
         return false;
     }
 
@@ -33,11 +42,6 @@ function validateFields() {
 
     if (form.phone.value.length == 0) {
         notifier.alert(windowTitle, 'Proporciona un teléfono');
-        return false;
-    }
-
-    if (form.email.value.length == 0) {
-        notifier.alert(windowTitle, 'Proporciona un correo electrónico');
         return false;
     }
 
