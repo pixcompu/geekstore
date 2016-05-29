@@ -8,3 +8,20 @@ a[href='manage_product.php']{
     margin-top: 1%;
     margin-bottom: 1%;
 }
+@media print{
+    body{
+        background-color: white;
+    }
+    #add-option{
+        display: none;
+    }
+    button{
+        display: none;
+    }
+    #brand{
+        color: black;
+    }
+    a{
+        text-decoration: none;
+    }
+}
