@@ -88,3 +88,33 @@ h1{
 #cart td[data-role]:before{
     content: '$ ';
 }
+
+@media print {
+    #game_over {
+        margin-top: 1%;
+        animation: none;
+        -webkit-animation: none;
+        -o-animation: none;
+    }
+    #cart table {
+        padding-top: 5%;
+    }
+    #cart table td {
+        padding-top: 2%;
+        padding-bottom: 2%;
+    }
+    #cart h1 {
+        padding-top: 30%;
+        font-size: 1.2em;
+    }
+    button {
+        display: none;
+    }
+    #options {
+        margin-top: 10%;
+    }
+    #brand {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
