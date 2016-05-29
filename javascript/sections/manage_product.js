@@ -132,7 +132,6 @@ function onRegisterProgress( total, current ){
 
 function showProducts( data ){
     var table = newTable( newTableHeader(['ID','NOMBRE','PRECIO','CANTIDAD','']) );
-    table.border = '1';
     for( var i = 0; i < data.length; i++ ){
         var product = data[i];
         var deleteButton = newButton('X', showDeleteDialog);

@@ -76,3 +76,27 @@
     background-color: dodgerblue;
     cursor: pointer;
 }
+
+#modal_window_body{
+    margin: 1%;
+}
+#modal_window_body form input{
+    border-bottom: 2px solid blue;
+}
+#modal_window_body label{
+    font-size: 0.6em;
+}
+#modal_window_body input{
+    font-size: 0.5em;
+}
+#modal_window_body textarea{
+    border: none;
+    width: 70%;
+    height: 80px;
+    font-family: game, sans-serif;
+    font-size: 0.4em;
+    border-bottom: 2px solid blue;
+}
+#modal_window_body select{
+    padding: 0.8%;
+}

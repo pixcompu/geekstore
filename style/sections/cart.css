@@ -2,26 +2,6 @@ a[href='cart.php']{
     color: white;
     background-color: black;
 }
-#modal_window_body table{
-    border: none;
-    margin-top: 2%;
-    border-top: 1px solid green;
-    border-bottom: 1px solid green;
-}
-#modal_window_body tr:nth-child(odd) {
-    background-color: white;
-    color: black;
-}
-#modal_window_body tr:nth-child(even) {
-    background-color: black;
-    color: white;
-}
-#modal_window_body table th{
-    padding: 1%;
-}
-a[href='cart.php']{
-    background-color: black;
-}
 body, #cart{
     text-align: center;
 }
@@ -73,13 +53,6 @@ h1{
         opacity: 0;
     }
 }
-#cart table{
-    text-align: center;
-    width: 60%;
-    color: black;
-    background-color: white;
-    margin: 1% 20% 2%;
-}
 #options button img{
     width: 20px;
     height: 20px;
@@ -93,21 +66,6 @@ h1{
 #options button:hover{
     background-color: yellow;
 }
-#cart tr th{
-    background-color: darkgray;
-    padding: 1%;
-}
-#cart table button{
-    padding: 10px;
-    border: 0;
-    background-color: red;
-    color: white;
-    margin: 2px;
-}
-#cart table button:hover{
-    cursor: pointer;
-    background-color: darkred;
-}
 #cart table select{
     width: 80%;
     padding-top: 5px;
@@ -115,15 +73,6 @@ h1{
     background-color: lightgreen;
     text-align: center;
     font-family: game, sans-serif;
-}
-#cart tr td{
-    text-align: center;
-}
-#cart tr:nth-child(odd) {
-    background-color: white;
-}
-#cart tr:nth-child(even) {
-    background-color: lightgrey;
 }
 #cart td[data-role]:before{
     content: '$ ';

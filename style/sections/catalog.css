@@ -1,7 +1,3 @@
-@font-face {
-    font-family: game;
-    src: url('../../resources/fonts/game/PressStart2P-Regular.ttf');
-}
 body {
     font-family: game, serif;
     background: black;
@@ -13,16 +9,12 @@ a[href='catalog.php']{
 input {
     font-family: game, serif;
 }
-
 #catalog, .box-container {
-    width: 100%;
     margin-top: 2%;
-    padding-left: 5%;
-    padding-right: 5%;
     border: 0;
-    margin-left: 0;
-    margin-right: 0;
-
+    width:90%;
+    margin-left:10%;
+    margin-right:0;
 }
 
 .box-container input[type=text] {

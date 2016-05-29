@@ -5,6 +5,7 @@
     $sectionTitle = "GeekStore - Carrito";
     require_once('parts/header.php');
     ?>
+    <link rel="stylesheet" href="../style/tables.css">
     <link rel="stylesheet" href="../style/sections/cart.css">
 </head>
 <body>
