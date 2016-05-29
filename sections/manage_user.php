@@ -8,6 +8,7 @@
     <script src="../javascript/adminSession.js"></script>
     <link rel="stylesheet" href="../style/floating_button.css">
     <link rel="stylesheet" href="../style/forms.css">
+    <link rel="stylesheet" href="../style/tables.css">
     <link rel="stylesheet" href="../style/sections/manage_user.css">
 </head>
 <body>

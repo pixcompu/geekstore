@@ -1,5 +1,5 @@
 /**
- * General DOM manipulation Wrapper By PIXCOMPU.
+ * General DOM manipulation Wrapper By PIXCOMPU (Felix).
  *
  * This functions save precious time when the page is creating DOM elements dinamically.
  * Comparation:

@@ -1,5 +1,5 @@
 /**
- * Cookie manipulation wrapper with JSON content By PIXCOMPU
+ * Cookie manipulation wrapper with JSON content By PIXCOMPU (Felix)
  */
 
 function CookieManager(){

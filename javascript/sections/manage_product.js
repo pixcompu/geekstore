@@ -152,7 +152,7 @@ function showDeleteDialog(event){
     notifier.setTheme( MODAL_RED );
     notifier.confirm(
         'Eliminar',
-        'A continuación se eliminara el producto con id =' + id + ', ¿Desea Continuar?',
+        'A continuación se eliminara el producto ' + id + ', ¿Desea Continuar?',
         function(confirm){
             if( confirm ){
                 deleteProduct(id);

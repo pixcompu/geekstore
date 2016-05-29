@@ -8,12 +8,6 @@
     <link rel="stylesheet" href="../style/star_wars_effect.css">
     <link rel="stylesheet" href="../style/forms.css">
     <link rel="stylesheet" href="../style/sections/contact.css">
-    <style>
-        a[href='contact.php']{
-            color: white;
-            background-color: black;
-        }
-    </style>
 </head>
 <body>
 <?php require_once('parts/navbar.php'); ?>
@@ -25,7 +19,7 @@
         <div class="contact-form ">
             <input id="email" class="form-input" name="emailInput" type="email" placeholder="Correo electrónico">
             <textarea id="message" class="form-textarea" name="messageInput" placeholder="Escribe tus comentarios y sugerencias"></textarea>
-            <input id="send" type="button" value="Enviar" class="geek-btn" name="btnSend" ></input>
+            <input id="send" type="button" value="Enviar" class="geek-btn" name="btnSend" >
         </div>
     </div>
 </div>

@@ -1,0 +1,30 @@
+tr:hover{
+    cursor: pointer;
+}
+tr th{
+    background-color: darkgray;
+    padding: 1%;
+}
+table{
+    margin-top: 5%;
+}
+table button{
+    padding: 10px;
+    border: 0;
+    background-color: red;
+    color: white;
+    margin: 2px;
+}
+table button:hover{
+    cursor: pointer;
+    background-color: darkred;
+}
+tr td{
+    text-align: center;
+}
+tr:nth-child(odd) {
+    background-color: white;
+}
+tr:nth-child(even) {
+    background-color: lightgrey;
+}
