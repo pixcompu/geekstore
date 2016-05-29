@@ -2,7 +2,10 @@
     font-family: game;
     src: url('../../resources/fonts/game/PressStart2P-Regular.ttf');
 }
-
+a[href='contact.php']{
+    color: white;
+    background-color: black;
+}
 body{
     font-family: game, serif;
 }

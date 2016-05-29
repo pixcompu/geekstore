@@ -1,5 +1,5 @@
 /**
- * XmlHttp request wrapper By PIXCOMPU.
+ * XmlHttp request wrapper By PIXCOMPU (Felix).
  * 
  * This class allows an ajax call with Javascript.
  *

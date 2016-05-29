@@ -67,6 +67,19 @@
     margin-top: 3%;
     font-size: 2em;
     margin-bottom: 5%;
+    -webkit-transition: transform 2s;
+    -moz-transition: transform 2s;
+    -ms-transition: transform 2s;
+    -o-transition: transform 2s;
+    transition: transform 2s;
+}
+
+#brand p:hover{
+    -webkit-transform: rotateX(720deg);
+    -moz-transform: rotateX(720deg);
+    -ms-transform: rotateX(720deg);
+    -o-transform: rotateX(720deg);
+    transform: rotateX(720deg);
 }
 
 a.navbar-item{

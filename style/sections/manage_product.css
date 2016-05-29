@@ -5,36 +5,6 @@ a[href='manage_product.php']{
 body{
     background-color: black;
 }
-#products tr:hover{
-    cursor: pointer;
-}
-#products tr th{
-    background-color: darkgray;
-    padding: 1%;
-}
-#products table{
-    margin-top: 5%;
-}
-#products table button{
-    padding: 10px;
-    border: 0;
-    background-color: red;
-    color: white;
-    margin: 2px;
-}
-#products table button:hover{
-    cursor: pointer;
-    background-color: darkred;
-}
-#products tr td{
-    text-align: center;
-}
-#products tr:nth-child(odd) {
-    background-color: white;
-}
-#products tr:nth-child(even) {
-    background-color: lightgrey;
-}
 #products{
     margin-left: 20%;
     margin-right: 20%;

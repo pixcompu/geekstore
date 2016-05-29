@@ -1,5 +1,5 @@
 /**
- * Modal message wrapper (Inspired by : http://www.w3schools.com/howto/howto_css_modals.asp) By PIXCOMPU.
+ * Modal message wrapper (Inspired by : http://www.w3schools.com/howto/howto_css_modals.asp) By PIXCOMPU (Felix).
  *      This class allows to show modal messages and confirm dialogs in screen.
  *
  * USAGE (IMPORTANT : Import the "notifier.css" in your header!):
