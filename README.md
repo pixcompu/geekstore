@@ -24,10 +24,10 @@ http://pixcompu.esy.es/sections/principal.php
 
 ![products](https://cloud.githubusercontent.com/assets/11744752/15631881/9a4b00c8-2544-11e6-92e6-81ea25b6a6a6.png)
 
-####Contacto
+####Carrito
 
 ![contact](https://cloud.githubusercontent.com/assets/11744752/15631884/a93a995e-2544-11e6-8794-4458438a02a6.png)
 
-####Administrador
+####Contacto
 
 ![admin](https://cloud.githubusercontent.com/assets/11744752/15631888/bad3cbae-2544-11e6-8268-b74c08021996.png)
