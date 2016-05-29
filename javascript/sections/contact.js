@@ -21,14 +21,14 @@ function validateFields(){
         }else{
             notifier.alert(
                 '¡Espera un momento!',
-                "El mensaje no puede ser vacio",
+                "El mensaje no puede ser vacío",
                 function(){}
             );
         }
     }else{
         notifier.alert(
             '¡Espera un momento!',
-            "El correo no puede ser vacio",
+            "El correo no puede ser vacío",
             function(){}
         );
     }
@@ -51,7 +51,7 @@ function sendMessage() {
 function onSendSuccess(response){
     notifier.setTheme(MODAL_GREEN);
     notifier.alert(
-        'Gracias por tu opinion',
+        'Gracias por tu opinión',
         "El correo ha sido enviado",
         function(){
             redirectTo('principal.php');

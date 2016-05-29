@@ -101,7 +101,7 @@ function addItem(){
             notifier.setTheme( MODAL_RED );
             notifier.alert(
                 '¡Espera un momento!',
-                'Ya has seleccionado todos los '+ cartItem['name'] + ' que tenemos',
+                'Ya has seleccionado todos los \''+ cartItem['name'] + '\' que tenemos',
                 function(){});
         }else{
             itemSelected['cart_quantity'] = cartItem['cart_quantity'] + 1;

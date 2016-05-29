@@ -250,10 +250,10 @@ function getUserForm() {
 
     var form = newForm('', 'POST', 'form');
     var username = newFormGroupInput('Nombre de Usuario : ', 'text', 'username', 'username');
-    var email = newFormGroupInput('Correo Electronico : ','email', 'email', 'email');
-    var password = newFormGroupInput('Password : ', 'password', 'password', 'password');
+    var email = newFormGroupInput('Correo Electrónico : ','email', 'email', 'email');
+    var password = newFormGroupInput('Contraseña : ', 'password', 'password', 'password');
     var type = newFormGroupSelect('Tipo : ', ['admin', 'user'], 'type', 'type');
-    var phone = newFormGroupInput('Telefono : ', 'text', 'phone', 'phone');
+    var phone = newFormGroupInput('Teléfono : ', 'text', 'phone', 'phone');
     appendItemsTo(
         form,
         [username, breakLine,  email, breakLine, password, breakLine, type, breakLine, phone]

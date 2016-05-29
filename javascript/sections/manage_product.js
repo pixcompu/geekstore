@@ -19,7 +19,7 @@ function onFetchSuccess(response){
 function onFetchFailure(error){
     notifier.setTheme(MODAL_RED);
     notifier.alert(
-        'No se pudo mostrar los productos',
+        'No se pudieron mostrar los productos',
         error
     );
 }
@@ -32,7 +32,7 @@ function getProductForm() {
 
     var form = newForm('', 'POST', 'form');
     var name = newFormGroupInput('Nombre : ', 'text', 'name', 'name');
-    var description = newFormGroupTextArea('Descripcion : ', 'description', 'description');
+    var description = newFormGroupTextArea('Descripción : ', 'description', 'description');
     description.id = 'description-wrapper';
     var price = newFormGroupInput('Precio : ', 'number', 'price', 'price');
     var quantity = newFormGroupInput('Cantidad en Stock : ', 'number', 'quantity', 'quantity');
@@ -193,7 +193,7 @@ function showDeleteDialog(event){
     notifier.setTheme( MODAL_RED );
     notifier.confirm(
         'Eliminar',
-        'A continuación se eliminara el producto ' + id + ', ¿Desea Continuar?',
+        'A continuación se eliminará el producto ' + id + ', ¿Desea Continuar?',
         function(confirm){
             if( confirm ){
                 deleteProduct(id);
@@ -268,8 +268,8 @@ function onDeleteSuccess(){
     notifier.dontExpectsHTMLContent();
     notifier.setTheme( MODAL_ORANGE );
     notifier.alert(
-        'Eliminacion Exitosa',
-        'El producto ha sido eliminado con exito',
+        'Eliminación Exitosa',
+        'El producto ha sido eliminado con éxito',
         refreshPage
     );
 }
