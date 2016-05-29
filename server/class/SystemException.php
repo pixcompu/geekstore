@@ -5,6 +5,7 @@ define('MODEL_ERROR', 2);
 define('NOT_FOUND', 3);
 define('FIELD_NOT_FOUND', 4);
 define('FIELD_NOT_VALID', 5);
+define('SALE_ABORTED', 6);
 class SystemException extends Exception{
 
     public function __construct($code, $message){

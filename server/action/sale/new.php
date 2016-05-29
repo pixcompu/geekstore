@@ -1,7 +1,14 @@
 <?php
 require_once('../../autoloader.php');
 
+$executor = null;
 try{
+
+    validateFields(array(
+        'user' => 'Tuvimos un problema accediendo a tu cuenta',
+        'products' => 'Tuvimmos un problema accediendo a tu pedido'
+    ));
+
     $username = $_POST["user"];
     $today = date("Y-m-d");
 
@@ -10,16 +17,24 @@ try{
     $total = 0;
 
     $saleItems = json_decode($_POST["products"], true);
+    $executor = $sale->getExecutor();
+    $executor->startTransaction();
+
     foreach ($saleItems as $saleItem){
+
         $product = new Product();
-        $product->setId($saleItem['id']);
+
+        $product->setId($saleItem["id"]);
         $productAttributes = $product->getById();
-        $product->setQuantity($productAttributes['quantity'] - $saleItem['quantity']);
+
+        if($productAttributes["quantity"] < $saleItem["quantity"]){
+            throw new SystemException(SALE_ABORTED, 'No tenemmos suficientes ' . $productAttributes["name"] . ' para registrar tu compra en este momento, nos quedan ' . $productAttributes["quantity"]);
+        }
+        $product->setQuantity($productAttributes["quantity"] - $saleItem["quantity"]);
         $product->update();
 
         $itemSubtotal = $productAttributes["price"] * $saleItem['quantity'];
-        $total += $itemSubtotal;;
-
+        $total += $itemSubtotal;
 
         $item = new SaleItem();
         $item->setFpId($saleItem['id']);
@@ -39,7 +54,16 @@ try{
     $ticket->setTotal($total);
     $ticket->save();
 
+    $executor->endTransaction(WITH_SUCCESS);
     respondWithSuccess("Se almaceno la compra correctamente");
+
 }catch(Exception $e){
-    respondWithError($e->getMessage());
+    if($executor != null){
+        $executor->endTransaction(WITH_FAILURE);
+    }
+    if( $e->getCode() == SALE_ABORTED || $e->getCode() == NOT_FOUND || $e->getCode() == FIELD_NOT_FOUND) {
+        respondWithError($e->getMessage());
+    }else{
+        respondWithError('Revisa tu conexion a internet');
+    }
 }

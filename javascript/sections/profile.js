@@ -6,4 +6,4 @@ window.onload = function(){
     appendText(findViewById('username'), user['username']);
     appendText(findViewById('email'), user['email']);
     appendText(findViewById('phone'), user['phone']);
-}
+};
