@@ -13,7 +13,7 @@
 <?php require_once('parts/navbar.php'); ?>
 
 <div id="cart">
-    <h1>&iexcl;Tu carrito está vacio!</h1><br>
+    <h1>&iexcl;Tu carrito est&aacute; vac&iacute;o!</h1><br>
     <img id="game_over" src="../resources/images/icons/game_over.png" alt="game_over"><br>
     <button id="start_shopping"><img src="../resources/images/icons/1UP.png" alt=""> Empieza a Comprar</button>
 </div>

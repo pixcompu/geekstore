@@ -16,27 +16,32 @@ function init(){
     }
 }
 
-function validateFields(){
-    var form = document.form;
-    if( form.username.value.length > 0 ){
-        if( form.password.value.length > 0 ){
-            if( form.phone.value.length > 0){
-                if( form.email.value.length > 0){
-                    return true;
-                }else{
-                    alert('El correo no puede ser vacio');
-                }
-            }else{
-                alert('El telefono no puede ser vacio');
-            }
-        }else{
-            alert('La contraseña no debe ser vacia');
-        }
+function validateFields() {
 
-    }else{
-        alert('El campo usuario no puede ser vacio');
+    var form = document.form;
+    var windowTitle = '¡Espera un momento!';
+
+    if (form.username.value.length == 0) {
+        notifier.alert(windowTitle, 'Proporciona un nombre de usuario');
+        return false;
     }
-    return false;
+
+    if (form.password.value.length == 0) {
+        notifier.alert(windowTitle, 'Proporciona una contraseña');
+        return false;
+    }
+
+    if (form.phone.value.length == 0) {
+        notifier.alert(windowTitle, 'Proporciona un teléfono');
+        return false;
+    }
+
+    if (form.email.value.length == 0) {
+        notifier.alert(windowTitle, 'Proporciona un correo electrónico');
+        return false;
+    }
+
+    return true;
 }
 
 function register(){
@@ -70,7 +75,6 @@ function onRegisterError(error){
     notifier.dontExpectsHTMLContent();
     notifier.setTheme( MODAL_RED );
     notifier.alert(
-        'Error de Registro',
+        'No pudimos registrar tu cuenta',
         error);
-    appendLog('REGISTER', error);
 }
