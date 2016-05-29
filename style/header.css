@@ -111,7 +111,7 @@ a.logout-item{
     color: white;
 }
 a.logout-item:hover{
-  
+
 }
 
 @media screen and (max-width: 760px) {
@@ -124,5 +124,17 @@ a.logout-item:hover{
     }
     #navbar li{
         width: 100%;
+    }
+}
+
+@media print {
+    #navbar {
+        display: none;
+    }
+    #brand {
+        margin-left:10%;
+    }
+    #brand img {
+        margin-top: 3%;
     }
 }

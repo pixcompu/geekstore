@@ -134,3 +134,9 @@ input {
     float: left;
     margin: 2%;
 }
+
+@media print {
+    #search {
+        display: none;
+    }
+}
