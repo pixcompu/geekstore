@@ -6,7 +6,7 @@ Geeekstore es una pagina que simula ser una tienda en linea de articulos de peli
 
 ##Sitio de prueba en linea.
 ######Proveedor de Hosting : Hostinger
-######Ultima Actualización : 06/05/2016.
+######Ultima Actualización : 29/05/2016.
 
 http://pixcompu.esy.es/sections/principal.php
 
@@ -16,10 +16,18 @@ http://pixcompu.esy.es/sections/principal.php
 
 ![loading](https://cloud.githubusercontent.com/assets/11744752/14947216/45669540-0ff5-11e6-9f64-c59db1fafd3a.png)
 
-####Vista de Visitante
+####Vista principal
 
-![no_loggued](https://cloud.githubusercontent.com/assets/11744752/14947215/4565269c-0ff5-11e6-807d-f039858d996f.png)
+![principal](https://cloud.githubusercontent.com/assets/11744752/15631878/8934e6fa-2544-11e6-9e50-06a6c7a70f80.png)
 
-#### Vista de Administrador
+####Productos
 
-![loggued](https://cloud.githubusercontent.com/assets/11744752/14947217/4568be2e-0ff5-11e6-9b6d-88ed7cc29fd0.png)
+![products](https://cloud.githubusercontent.com/assets/11744752/15631881/9a4b00c8-2544-11e6-92e6-81ea25b6a6a6.png)
+
+####Contacto
+
+![contact](https://cloud.githubusercontent.com/assets/11744752/15631884/a93a995e-2544-11e6-8794-4458438a02a6.png)
+
+####Administrador
+
+![admin](https://cloud.githubusercontent.com/assets/11744752/15631888/bad3cbae-2544-11e6-8268-b74c08021996.png)
