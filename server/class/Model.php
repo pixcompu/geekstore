@@ -202,6 +202,13 @@ abstract class Model{
         }
         return $fields;
     }
+
+    /**
+     * @return Executor executor
+     */
+    public function getExecutor(){
+        return $this->executor;
+    }
 }
 class Product extends Model{
 

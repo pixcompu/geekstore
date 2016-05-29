@@ -44,9 +44,17 @@ h1{
     padding: 1%;
     margin-top: 2%;
 }
-#btn_shop{
+#btn_buy_cart_items{
     background-color: midnightblue;
-    color: white;
+    color:whitesmoke;
+}
+#btn_drop_cart{
+    background-color: red;
+    color:whitesmoke;
+}
+#btn_shop{
+    background-color: green;
+    color: whitesmoke;
 }
 #start_shopping:hover{
     background-color: lightgreen;
@@ -80,7 +88,6 @@ h1{
     font-family: game, sans-serif;
     border-radius: 5%;
     padding: 1%;
-    background-color: lawngreen;
     cursor: pointer;
 }
 #options button:hover{

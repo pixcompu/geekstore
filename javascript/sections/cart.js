@@ -13,7 +13,7 @@ function proccessSale(){
         if (items.hasOwnProperty(key)) {
             var current = items[key];
             var row = newTableRow([current['id'], current['name'], current['price'], current['cart_quantity'], current['subtotal']]);
-            total += current['subtotal'];
+            total += parseFloat(current['subtotal']);
             table.appendChild(row);
         }
     }
@@ -50,27 +50,33 @@ function buyItems(){
     ticketData['user'] = JSON.parse(cookieManager.getValue('user'))['username'];
     ticketData['products'] = JSON.stringify(cart);
 
+    ajax.expectJsonProperties(['status']);
     ajax.post(
         '../server/action/sale/new.php',
         ticketData,
+        onSaleSuccess,
+        onSaleError
+    );
+}
+
+function onSaleSuccess( data ){
+    notifier.setTheme(MODAL_GREEN);
+    notifier.alert(
+        'Gracias!',
+        'Gracias por tu compra',
         function(){
-            notifier.alert(
-                'Gracias!',
-                'Gracias por tu compra',
-                function(){
-                    dropCart();
-                    refreshPage();
-                }
-            );
-        },
-        function(error){
-            notifier.setTheme(MODAL_RED);
-            notifier.alert(
-                'Lo Sentimos!',
-                error,
-                function(){}
-            );
+            dropCart();
+            refreshPage();
         }
+    );
+}
+
+function onSaleError(error){
+    notifier.setTheme(MODAL_RED);
+    notifier.alert(
+        '¡Lo Sentimos!',
+        error,
+        function(){}
     );
 }
 

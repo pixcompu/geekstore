@@ -59,6 +59,10 @@ function getCard( product ){
     addClassTo(buttonCart, 'action-button');
     buttonCart.setAttribute( 'id' , 'addToCart' );
     buttonCart.setAttribute( 'data-item', JSON.stringify(product) );
+    if( product['quantity'] == 0 ){
+        buttonCart.setAttribute('disabled', true);
+        buttonCart.style.backgroundColor = 'red';
+    }
 
     var detailImage = newImg('../resources/images/icons/eye.png');
     addClassTo(detailImage, 'button-image');
@@ -124,7 +128,14 @@ function showDetails(){
     var title = newH2(product['name']);
     var description = newParagraph(product['description']);
     var price = newParagraph('Precio : $' + product['price']);
-    var existance = newParagraph('En existencia : ' + product['quantity']);
+    var existance;
+    if(product['quantity'] == 0){
+        existance = newParagraph('AGOTADO');
+        existance.style.color = 'red';
+    }else{
+        existance = newParagraph('En existencia : ' + product['quantity']);
+    }
+
     addClassTo(price, 'details-price');
     addClassTo(detailsPanel, 'details-panel');
     addClassTo(image, 'details-panel-image');

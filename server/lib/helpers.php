@@ -27,7 +27,7 @@ function validateImage($field, $message){
 }
 function validateIntegers($fields){
     foreach ($fields as $field => $message){
-        if( !is_integer($_POST[$field]) ){
+        if( !ctype_digit($_POST[$field]) ){
             throw new SystemException(FIELD_NOT_VALID, $message);
         }
     }
