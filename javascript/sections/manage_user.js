@@ -193,7 +193,7 @@ function validateFormData(){
         notifier.alert( errorWindowTitle, 'Proporciona un correo electrónico');
         return false;
     }else if( !emailIsValid(findViewById('email').value)){
-        notifier.alert( errorWindowTitle, 'El correo proporcionado no es valido');
+        notifier.alert( errorWindowTitle, 'El correo proporcionado no es válido');
         return false;
     }
     cachedValues['email'] = findViewById('email').value;
@@ -214,7 +214,7 @@ function validateFormData(){
         notifier.alert( errorWindowTitle, 'Proporciona un teléfono');
         return false;
     }else if(isNaN(findViewById('phone').value)){
-        notifier.alert( errorWindowTitle, 'El teléfono proporcionado no es valido');
+        notifier.alert( errorWindowTitle, 'El teléfono proporcionado no es válido');
         return false;
     }
     cachedValues['phone'] = findViewById('phone').value;
@@ -223,7 +223,7 @@ function validateFormData(){
 }
 
 function onRegisterSuccess( data ){
-    cachedValues.length = 0;
+    cachedValues
     notifier.setTheme( MODAL_GREEN );
     notifier.dontExpectsHTMLContent();
     notifier.alert(
