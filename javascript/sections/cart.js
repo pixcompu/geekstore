@@ -46,23 +46,35 @@ function buyItems(){
             cart.push(cartItem);
         }
     }
-    var ticketData = {};
-    ticketData['user'] = JSON.parse(cookieManager.getValue('user'))['username'];
-    ticketData['products'] = JSON.stringify(cart);
 
-    ajax.expectJsonProperties(['status']);
-    ajax.post(
-        '../server/action/sale/new.php',
-        ticketData,
-        onSaleSuccess,
-        onSaleError
-    );
+    if(cookieManager.check('user')){
+        var ticketData = {};
+        ticketData['user'] = JSON.parse(cookieManager.getValue('user'))['username'];
+        ticketData['products'] = JSON.stringify(cart);
+
+        ajax.expectJsonProperties(['status']);
+        ajax.post(
+            '../server/action/sale/new.php',
+            ticketData,
+            onSaleSuccess,
+            onSaleError
+        );
+    }else{
+        notifier.setTheme(MODAL_RED);
+        notifier.alert(
+            '¡Espera un momento!',
+            'Antes de hacer una compra necesitas iniciar sesión',
+            function(){
+                redirectTo('login.php');
+            }
+        );
+    }
 }
 
 function onSaleSuccess( data ){
     notifier.setTheme(MODAL_GREEN);
     notifier.alert(
-        'Gracias!',
+        'Compra exitosa',
         'Gracias por tu compra',
         function(){
             dropCart();
@@ -159,7 +171,9 @@ function deleteItem(){
 
 window.onload = function(){
     if( cookieManager.check('cart')){
+
         clearElement(findViewById('cart'));
+
         showCartItems(JSON.parse(cookieManager.getValue('cart')));
 
         findViewById('btn_buy_cart_items').onclick = function(){
