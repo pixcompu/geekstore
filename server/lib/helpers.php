@@ -20,11 +20,6 @@ function validateFields($fields){
         }
     }
 }
-function validateImage($field, $message){
-    if(!isset($_FILES[$field])){
-        throw new SystemException(FIELD_NOT_FOUND, $message);
-    }
-}
 function validateIntegers($fields){
     foreach ($fields as $field => $message){
         if( !ctype_digit($_POST[$field]) ){

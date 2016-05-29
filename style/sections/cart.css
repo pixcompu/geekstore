@@ -5,9 +5,6 @@ a[href='cart.php']{
 body, #cart{
     text-align: center;
 }
-body{
-    background-color: black;
-}
 #start_shopping img{
     width: 50px;
     height: 50px;
@@ -23,23 +20,40 @@ h1{
     width: inherit;
     padding: 1%;
     margin-top: 2%;
-}
-#btn_buy_cart_items{
-    background-color: midnightblue;
-    color:whitesmoke;
-}
-#btn_drop_cart{
-    background-color: red;
-    color:whitesmoke;
-}
-#btn_shop{
-    background-color: green;
-    color: whitesmoke;
+    border: 0;
 }
 #start_shopping:hover{
     background-color: lightgreen;
     cursor: pointer;
 }
+#btn_buy_cart_items{
+    background-color: mediumseagreen;
+    color:black;
+    border: 0;
+}
+#btn_buy_cart_items:hover{
+    background-color: green;
+    color: white;
+}
+#btn_drop_cart{
+    background-color: indianred;
+    color:black;
+    border: 0;
+}
+#btn_drop_cart:hover{
+    background-color: red;
+    color: white;
+}
+#btn_shop{
+    background-color: cornflowerblue;
+    color: black;
+    border: 0;
+}
+#btn_shop:hover{
+    background-color: midnightblue;
+    color: white;
+}
+
 #game_over{
     animation: tilt 0.7s linear 0s infinite;
     -webkit-animation: tilt 0.7s linear 0s infinite;
@@ -62,9 +76,6 @@ h1{
     border-radius: 5%;
     padding: 1%;
     cursor: pointer;
-}
-#options button:hover{
-    background-color: yellow;
 }
 #cart table select{
     width: 80%;

@@ -35,7 +35,7 @@ try{
     
     $updatedImage = isset($_FILES['image']);
     if( $updatedImage ){
-        $fileUploader = new FileUploader();
+        $fileUploader = new FileManipulator();
         $fileUploader->upload('image');
         $imagePath = $fileUploader->getUploadedFileURL();
         $product->setImage($imagePath);

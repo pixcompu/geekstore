@@ -11,8 +11,6 @@ try{
             'quantity' => 'Proporciona una cantidad')
     );
 
-    validateImage('image', 'Proporciona una imagen');
-
     validateIntegers(
         array('quantity' => 'La cantidad debe ser un número entero')
     );
@@ -32,7 +30,7 @@ try{
     $product->setPrice($price);
     $product->setQuantity($quantity);
     
-    $fileUploader = new FileUploader();
+    $fileUploader = new FileManipulator();
     $fileUploader->upload('image');
     $imagePath = $fileUploader->getUploadedFileURL();
     $product->setImage($imagePath);

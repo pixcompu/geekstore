@@ -5,7 +5,7 @@
  * Date: 25/04/2016
  * Time: 07:06 PM
  */
-class FileUploader{
+class FileManipulator{
 
     private $uploadFolder = '../../../resources/images/catalog/';
     private $uploadPath = 'resources/images/catalog/';
@@ -38,13 +38,13 @@ class FileUploader{
                 if (move_uploaded_file($_FILES[$nombreInput]['tmp_name'], $urlArchivoPorSubir)) {
                     $this->uploadedFileURL = $this->uploadPath . $imgName;
                 } else {
-                    throw new Exception('Error al guardar el archivo');
+                    throw new SystemException(FIELD_NOT_VALID, 'Hubo un error al guardar la imagen');
                 }
             }else{
-                throw new Exception('Formato incorrecto');
+                throw new SystemException(FIELD_NOT_VALID, 'Formato incorrecto, aceptamos sólo los siguientes formatos: JPG, PNG ó JPEG');
             }
         }else{
-            throw new Exception('Error al subir el archivo');
+            throw new SystemException(FIELD_NOT_FOUND, 'Proporciona una imagen');
         }
     }
 
@@ -57,9 +57,9 @@ class FileUploader{
         $isJPG = (strcmp($extension, "jpg") == 0);
         $isPNG = (strcmp($extension, "png") == 0);
         $isJPEG = (strcmp($extension, "jpeg") == 0);
-        $isMp4 = (strcmp($extension, "mp4") == 0);
 
-        return ($isJPG || $isPNG || $isJPEG || $isMp4);
+
+        return ($isJPG || $isPNG || $isJPEG);
     }
 
     public function dumpFiles()
