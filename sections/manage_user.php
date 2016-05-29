@@ -16,7 +16,9 @@
 <?php require_once('parts/navbar.php'); ?>
 
 <div id="users"></div>
-<button class="floating-button" onclick="showRegister()">+</button>
+<div id="add-option">
+    <button class="floating-button" onclick="showRegister()">+</button>
+</div>
 
 <?php require_once('parts/scripts.php'); ?>
 

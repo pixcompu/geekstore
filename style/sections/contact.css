@@ -43,6 +43,26 @@ body{
     box-shadow: none;
 }
 
-@media screen and (max-width: 760px) {
-
+@media print{
+    body{
+        background-color: white;
+    }
+    button{
+        display: none;
+    }
+    #brand{
+        color: black;
+        top:0;
+        position:fixed;
+    }
+    #pacman{
+        display: none;
+    }
+    #send{
+        display: none;
+    }
+    .container{
+        margin-top: 30%;
+        width: 100%;
+    }
 }
