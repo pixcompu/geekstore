@@ -226,37 +226,22 @@ class Product extends Model{
         $this->id = $this->executor->getLastAutoincrementId();
     }
 
-    public function findAll($textToSearch, $startPage = 0, $limit = 100){
-        $products = parent::all($startPage, $limit);
-        $transformedProducts = array();
-        foreach( $products as $product) {
-            if ((strpos(strtolower($product['name']), strtolower($textToSearch)) !== false) ||
-                 (strpos(strtolower($product['description']), strtolower($textToSearch)) !== false) ) {
-                $relativePath = $product['image'];
-                $product['image'] = 'http://' .  $_SERVER['SERVER_NAME'] . "/" ;
-                if( strcmp( $_SERVER['SERVER_NAME'], 'localhost') == 0){
-                    $product['image'] .= PROJECT_FOLDER_NAME . "/";
-                }
-                $product['image'] .= $relativePath;
-
-                $transformedProducts[] = $product;
-            }
-        }
-        return $transformedProducts;
-    }
-
-    public function all($startPage = 0, $limit = 100){
+    public function all($textToSearch = null, $startPage = 0, $limit = 100){
         $products = parent::all($startPage, $limit);
         $transformedProducts = array();
         foreach( $products as $product){
-            $relativePath = $product['image'];
-            $product['image'] = 'http://' .  $_SERVER['SERVER_NAME'] . "/" ;
-            if( strcmp( $_SERVER['SERVER_NAME'], 'localhost') == 0){
-                $product['image'] .= PROJECT_FOLDER_NAME . "/";
+            $searchModeActivated = $textToSearch != null;
+            if( $searchModeActivated ){
+                $nameMatchSearch = (strpos(strtolower($product['name']), strtolower($textToSearch)) !== false);
+                $descriptionMatchSearch =  (strpos(strtolower($product['description']), strtolower($textToSearch)) !== false);
+                if ( $nameMatchSearch || $descriptionMatchSearch ){
+                    $product['image'] = $this->getImagePath($product['image']);
+                    $transformedProducts[] = $product;
+                }
+            }else{
+                $product['image'] = $this->getImagePath($product['image']);
+                $transformedProducts[] = $product;
             }
-            $product['image'] .= $relativePath;
-
-            $transformedProducts[] = $product;
         }
         return $transformedProducts;
     }
@@ -354,6 +339,14 @@ class Product extends Model{
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
+    }
+
+    public function getImagePath($relativePath){
+        $path = 'http://' .  $_SERVER['SERVER_NAME'] . "/" ;
+        if( strcmp( $_SERVER['SERVER_NAME'], 'localhost') == 0){
+            $path .= PROJECT_FOLDER_NAME . "/";
+        }
+        return $path . $relativePath;
     }
 
 }

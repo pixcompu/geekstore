@@ -8,7 +8,9 @@ try{
     ));
     $product = new Product();
     $product->setId($_POST['id']);
+    $productAttributes = $product->getById();
     $product->delete();
+    unlink($product->getImagePath($productAttributes['image']));
     respondWithSuccess();
 }catch(Exception $e){
     if( $e->getCode() == FIELD_NOT_FOUND){

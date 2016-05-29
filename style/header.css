@@ -1,6 +1,15 @@
 #header{
     background: midnightblue url('../resources/images/background/citybackground.png') repeat-x;
     background-size: contain;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+}
+#header:hover{
+    background: midnightblue url('../resources/images/background/hovercity.png') repeat-x;
+    background-size: contain;
 }
 #header ul{
     list-style: none;
