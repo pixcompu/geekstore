@@ -17,13 +17,6 @@ define('TYPE_USER', "user");
 /**
  * Database Information
  */
-/*
-define('DIRECCION', 'mysql.hostinger.mx');
-define('USER', 'u791421986_pix');
-define('PASSWORD', 'naruto1993');
-define('DATABASE', 'u791421986_geek');
-*/
-
 define('DIRECCION', 'localhost');
 define('USER', 'root');
 define('PASSWORD', '');
