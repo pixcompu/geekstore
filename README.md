@@ -8,7 +8,7 @@ Geeekstore es una pagina que simula ser una tienda en linea de articulos de peli
 ######Proveedor de Hosting : Hostinger
 ######Ultima Actualización : 29/05/2016.
 
-http://pixcompu.esy.es/sections/principal.php
+http://pixcompu.online/geekstore
 
 ## Capturas
 
